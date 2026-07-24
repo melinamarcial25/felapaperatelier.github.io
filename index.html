@@ -61,17 +61,36 @@
     .login-screen {
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(22rem, .92fr);
+      grid-template-rows: auto 1fr;
       padding: 0;
       background: var(--paper);
+    }
+    .login-brand-banner {
+      grid-column: 1 / -1;
+      display: grid;
+      min-height: 6.5rem;
+      place-items: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      padding: .65rem 1rem;
+    }
+    .login-brand-banner img {
+      display: block;
+      width: min(11rem, 48vw);
+      height: 5rem;
+      object-fit: contain;
+      mix-blend-mode: multiply;
     }
     .login-intro {
       position: relative;
       display: flex;
-      min-height: 100vh;
-      align-items: flex-end;
+      min-height: calc(100vh - 6.5rem);
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       padding: clamp(2rem, 6vw, 6rem);
       color: var(--wine-dark);
+      text-align: center;
       background:
         linear-gradient(145deg, rgba(245, 236, 223, .1), rgba(245, 236, 223, .48)),
         url("assets/fela-floral-background.jpg") center / cover;
@@ -84,22 +103,10 @@
     }
     .login-intro::before { width: 30rem; height: 30rem; top: -12rem; right: -10rem; }
     .login-intro::after { width: 17rem; height: 17rem; left: -7rem; bottom: 16rem; }
-    .brand {
-      position: absolute;
-      top: clamp(2rem, 5vw, 4rem);
-      left: clamp(2rem, 6vw, 6rem);
-      z-index: 1;
-    }
-    .brand-logo {
-      display: block;
-      width: clamp(9rem, 18vw, 14rem);
-      height: auto;
-      mix-blend-mode: multiply;
-    }
     .intro-copy { position: relative; z-index: 1; max-width: 42rem; }
     .intro-copy h1 {
       max-width: 10ch;
-      margin: 0;
+      margin: 0 auto;
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(3rem, 7vw, 6.4rem);
       font-weight: 500;
@@ -107,18 +114,19 @@
     }
     .intro-copy p {
       max-width: 38rem;
-      margin: 1.5rem 0 0;
+      margin: 1.5rem auto 0;
       color: rgba(54, 38, 31, .78);
       font-size: clamp(1rem, 1.5vw, 1.15rem);
       line-height: 1.7;
     }
     .login-panel {
       display: grid;
-      min-height: 100vh;
+      min-height: calc(100vh - 6.5rem);
       place-items: center;
       padding: clamp(2rem, 6vw, 5rem);
     }
-    .login-card { width: min(100%, 27rem); }
+    .login-card { width: min(100%, 27rem); text-align: center; }
+    .login-card .field { text-align: left; }
     .login-card h2 {
       margin: 0;
       font-size: clamp(2.25rem, 4vw, 3.5rem);
@@ -181,21 +189,6 @@
       font-size: .88rem;
     }
     .portal { min-height: 100vh; }
-    .brand-banner {
-      display: grid;
-      min-height: 8.5rem;
-      place-items: center;
-      border-bottom: 1px solid var(--line);
-      background: var(--paper);
-      padding: 1rem;
-    }
-    .brand-banner img {
-      display: block;
-      width: min(15rem, 55vw);
-      height: 6.2rem;
-      object-fit: contain;
-      mix-blend-mode: multiply;
-    }
     .topbar {
       position: sticky;
       top: 0;
@@ -319,9 +312,6 @@
     .schedule-item { display: grid; grid-template-columns: 1fr 9rem auto; gap: .65rem; align-items: end; }
     .remove { min-height: 3.15rem; border: 0; background: transparent; color: var(--danger); font-weight: 700; }
     .form-actions {
-      position: sticky;
-      bottom: 1rem;
-      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -387,9 +377,8 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
     @media (max-width: 820px) {
-      .login-screen { grid-template-columns: 1fr; }
-      .login-intro { min-height: 42vh; align-items: center; justify-content: center; padding-top: 7rem; text-align: center; }
-      .login-intro .brand { left: 50%; transform: translateX(-50%); }
+      .login-screen { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+      .login-intro { min-height: 42vh; align-items: center; justify-content: center; padding-top: 3rem; text-align: center; }
       .intro-copy p { margin-left: auto; margin-right: auto; }
       .login-panel { min-height: 58vh; }
       .intro-copy h1 { font-size: clamp(3rem, 14vw, 5rem); }
@@ -419,8 +408,10 @@
 <body>
   <main>
     <section id="login-view" class="login-screen">
+      <div class="login-brand-banner">
+        <img src="assets/fela-logo.png" alt="Fela Atelier">
+      </div>
       <div class="login-intro">
-        <div class="brand"><img class="brand-logo" src="assets/fela-logo.png" alt="Fela Atelier"></div>
         <div class="intro-copy">
           <p class="eyebrow">Portal privado</p>
           <h1>Su historia, en cada detalle.</h1>
@@ -447,11 +438,8 @@
     </section>
 
     <section id="portal-view" class="portal hidden">
-      <div class="brand-banner">
-        <img src="assets/fela-logo.png" alt="Fela Atelier">
-      </div>
       <header class="topbar">
-        <strong>Portal de clientes</strong>
+        <img class="topbar-logo" src="assets/fela-logo.png" alt="Fela Atelier">
         <div class="topbar-actions">
           <span id="save-status" class="save-status">Sin cambios</span>
           <button id="logout-button" type="button" class="quiet">Cerrar sesión</button>
@@ -726,7 +714,6 @@
           </div>
           <div class="form-action-buttons">
             <button id="save-button" class="secondary" type="submit">Guardar borrador</button>
-            <button id="incomplete-button" class="secondary" type="button">Detalles sin completar</button>
             <button id="ready-button" class="primary" type="button">Listo para diseñar</button>
           </div>
         </div>
@@ -983,7 +970,6 @@
         validateFiles(files);
         saving = true;
         $("save-button").disabled = true;
-        $("incomplete-button").disabled = true;
         $("ready-button").disabled = true;
         saveButton.textContent = "Guardando…";
         status(files.length ? "Subiendo fotografías…" : "Guardando…", "saving");
@@ -1006,7 +992,6 @@
         saving = false;
         if (!locked) {
           $("save-button").disabled = false;
-          $("incomplete-button").disabled = false;
           $("ready-button").disabled = false;
         }
         saveButton.textContent = "Guardar borrador";
@@ -1029,20 +1014,13 @@
         return;
       }
 
-      const message = projectStatus === "Listo para diseñar"
-        ? `${client.name} completó su formulario y está listo para diseñar.`
-        : `${client.name} guardó su formulario con detalles sin completar.`;
+      const message = `${client.name} completó su formulario y está listo para diseñar.`;
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
       if (whatsappWindow) whatsappWindow.location.href = whatsappUrl;
       else window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
-      if (projectStatus === "Listo para diseñar") {
-        setFormLocked(true);
-        toast("El formulario quedó listo para diseñar y fue bloqueado.");
-      } else {
-        status("Detalles sin completar", "saved");
-        toast("El estado quedó guardado como detalles sin completar.");
-      }
+      setFormLocked(true);
+      toast("El formulario quedó listo para diseñar y fue bloqueado.");
     }
 
     loginForm.addEventListener("submit", async event => {
@@ -1088,7 +1066,6 @@
       dirty = true;
       saveProject({ manual: true });
     });
-    $("incomplete-button").addEventListener("click", () => markProjectStatus("Detalles sin completar"));
     $("ready-button").addEventListener("click", () => markProjectStatus("Listo para diseñar"));
     $("add-schedule").addEventListener("click", () => {
       addScheduleItem();
