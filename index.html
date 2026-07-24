@@ -7,18 +7,18 @@
   <title>Portal de clientes | Fela Paper Atelier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #352d2b;
-      --wine: #74434d;
-      --wine-dark: #512d35;
+      --wine: #5a4032;
+      --wine-dark: #36261f;
       --sage: #7e8b75;
-      --paper: #fffdf8;
-      --cream: #f5efe5;
-      --sand: #cdbdad;
-      --line: #ddd0c1;
-      --muted: #776c67;
+      --paper: #f5ecdf;
+      --cream: #e9dccb;
+      --sand: #c7b39b;
+      --line: #d1bfaa;
+      --muted: #75675d;
       --success: #55704f;
       --danger: #9a3e42;
       --shadow: 0 22px 65px rgba(76, 55, 46, .1);
@@ -45,7 +45,7 @@
     button { cursor: pointer; }
     button:disabled { cursor: wait; opacity: .65; }
     .hidden { display: none !important; }
-    .serif { font-family: "Playfair Display", serif; }
+    .serif { font-family: "Cormorant Garamond", serif; }
     .eyebrow {
       margin: 0 0 .7rem;
       color: var(--wine);
@@ -71,10 +71,10 @@
       align-items: flex-end;
       overflow: hidden;
       padding: clamp(2rem, 6vw, 6rem);
-      color: #fffaf3;
+      color: var(--wine-dark);
       background:
-        linear-gradient(145deg, rgba(53, 45, 43, .12), rgba(53, 45, 43, .86)),
-        linear-gradient(135deg, #b5a18e, #705057);
+        linear-gradient(145deg, rgba(245, 236, 223, .1), rgba(245, 236, 223, .48)),
+        url("assets/fela-floral-background.jpg") center / cover;
     }
     .login-intro::before, .login-intro::after {
       content: "";
@@ -89,15 +89,18 @@
       top: clamp(2rem, 5vw, 4rem);
       left: clamp(2rem, 6vw, 6rem);
       z-index: 1;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(1.25rem, 2vw, 1.8rem);
-      letter-spacing: .04em;
+    }
+    .brand-logo {
+      display: block;
+      width: clamp(9rem, 18vw, 14rem);
+      height: auto;
+      mix-blend-mode: multiply;
     }
     .intro-copy { position: relative; z-index: 1; max-width: 42rem; }
     .intro-copy h1 {
       max-width: 10ch;
       margin: 0;
-      font-family: "Playfair Display", serif;
+      font-family: "Cormorant Garamond", serif;
       font-size: clamp(3rem, 7vw, 6.4rem);
       font-weight: 500;
       line-height: .98;
@@ -105,7 +108,7 @@
     .intro-copy p {
       max-width: 38rem;
       margin: 1.5rem 0 0;
-      color: rgba(255, 250, 243, .8);
+      color: rgba(54, 38, 31, .78);
       font-size: clamp(1rem, 1.5vw, 1.15rem);
       line-height: 1.7;
     }
@@ -191,7 +194,7 @@
       padding: .9rem clamp(1rem, 4vw, 3.5rem);
       backdrop-filter: blur(16px);
     }
-    .topbar-brand { font-family: "Playfair Display", serif; font-size: 1.25rem; font-weight: 600; }
+    .topbar-logo { display: block; width: 7.5rem; height: 2.5rem; object-fit: contain; mix-blend-mode: multiply; }
     .topbar-actions { display: flex; align-items: center; gap: .75rem; }
     .save-status {
       display: inline-flex;
@@ -214,9 +217,11 @@
     @keyframes pulse { 50% { opacity: .35; } }
     .portal-hero {
       padding: clamp(3rem, 7vw, 6.5rem) 1.25rem clamp(4rem, 8vw, 7rem);
-      color: #fffaf3;
+      color: var(--wine-dark);
       text-align: center;
-      background: linear-gradient(135deg, #6f474f, #3f3433);
+      background:
+        linear-gradient(rgba(245, 236, 223, .38), rgba(245, 236, 223, .62)),
+        url("assets/fela-floral-background.jpg") center / cover;
     }
     .portal-hero h1 {
       max-width: 15ch;
@@ -225,7 +230,7 @@
       font-weight: 500;
       line-height: 1;
     }
-    .portal-hero p { max-width: 43rem; margin: auto; color: rgba(255, 250, 243, .75); line-height: 1.7; }
+    .portal-hero p { max-width: 43rem; margin: auto; color: rgba(54, 38, 31, .72); line-height: 1.7; }
     .form-wrap { width: min(100% - 2rem, 70rem); margin: -3rem auto 5rem; }
     .progress-note {
       display: flex;
@@ -248,7 +253,7 @@
       margin-bottom: 1rem;
       border: 1px solid var(--line);
       border-radius: 1.45rem;
-      background: rgba(255, 253, 248, .95);
+      background: rgba(245, 236, 223, .96);
       padding: clamp(1.25rem, 3vw, 2.2rem);
       box-shadow: 0 12px 40px rgba(76, 55, 46, .055);
     }
@@ -260,7 +265,7 @@
       border-radius: 50%;
       background: #efe2dc;
       color: var(--wine);
-      font-family: "Playfair Display", serif;
+      font-family: "Cormorant Garamond", serif;
       font-size: 1.15rem;
       font-weight: 600;
     }
@@ -279,6 +284,13 @@
       padding: .8rem .9rem;
     }
     .choice input { accent-color: var(--wine); }
+    .conditional-panel {
+      grid-column: 1 / -1;
+      border-left: 3px solid var(--sand);
+      background: rgba(255, 255, 255, .32);
+      border-radius: .8rem;
+      padding: .3rem 1rem 1rem;
+    }
     .upload-zone {
       border: 1px dashed #bba796;
       border-radius: 1rem;
@@ -348,7 +360,7 @@
     }
     @media (max-width: 650px) {
       .screen { padding: 0; }
-      .topbar-brand { font-size: 1rem; }
+      .topbar-logo { width: 6rem; }
       .topbar .save-status { display: none; }
       .portal-hero { text-align: left; }
       .portal-hero h1 { margin-left: 0; }
@@ -371,9 +383,9 @@
   <main>
     <section id="login-view" class="login-screen">
       <div class="login-intro">
-        <div class="brand">Fela Paper Atelier</div>
+        <div class="brand"><img class="brand-logo" src="assets/fela-logo.png" alt="Fela Atelier"></div>
         <div class="intro-copy">
-          <p class="eyebrow" style="color:#f0ddd8">Portal privado</p>
+          <p class="eyebrow">Portal privado</p>
           <h1>Su historia, en cada detalle.</h1>
           <p>Un espacio pensado para reunir la información, inspiración y fotografías que darán forma a su invitación.</p>
         </div>
@@ -399,7 +411,7 @@
 
     <section id="portal-view" class="portal hidden">
       <header class="topbar">
-        <div class="topbar-brand">Fela Paper Atelier</div>
+        <img class="topbar-logo" src="assets/fela-logo.png" alt="Fela Atelier">
         <div class="topbar-actions">
           <span id="save-status" class="save-status">Sin cambios</span>
           <button id="logout-button" type="button" class="quiet">Cerrar sesión</button>
@@ -407,7 +419,7 @@
       </header>
 
       <div class="portal-hero">
-        <p class="eyebrow" style="color:#e6c9c8">Su proyecto</p>
+        <p class="eyebrow">Su proyecto</p>
         <h1 id="welcome-title" class="serif">Los detalles de su celebración</h1>
         <p>Completen lo que ya tengan definido. Pueden dejar cualquier campo vacío, volver después y continuar exactamente donde se quedaron.</p>
       </div>
@@ -422,12 +434,51 @@
           <span class="section-number">01</span>
           <div>
             <div class="section-heading">
-              <h2 class="serif">La pareja</h2>
-              <p>Escriban sus nombres exactamente como desean verlos en la invitación.</p>
+              <h2 class="serif">Los festejados</h2>
+              <p>Esta información se adapta a bodas, XV años, cumpleaños, bautizos y cualquier otra celebración.</p>
             </div>
             <div class="grid">
-              <div class="field"><label for="nombres_pareja">Nombres completos</label><input id="nombres_pareja" name="nombres_pareja" class="control" placeholder="Andrea Martínez y Carlos Robles"></div>
-              <div class="field"><label for="orden_pareja">Presentación de los nombres</label><input id="orden_pareja" name="orden_pareja" class="control" placeholder="Andrea & Carlos"></div>
+              <div class="field"><label for="nombres_pareja">Nombre o nombres de los festejados</label><input id="nombres_pareja" name="nombres_pareja" class="control" placeholder="Ej. Andrea Martínez o Andrea & Carlos"></div>
+              <div class="field"><label for="orden_pareja">Cómo desean presentar los nombres</label><input id="orden_pareja" name="orden_pareja" class="control" placeholder="Ej. Andrea, Andrea & Carlos o Familia Robles"></div>
+              <div class="field span-2">
+                <span class="field-label">¿Desean incluir los nombres de sus padres?</span>
+                <div class="choice-row">
+                  <label class="choice"><input type="radio" name="incluir_padres" value="Sí"> Sí</label>
+                  <label class="choice"><input type="radio" name="incluir_padres" value="No"> No</label>
+                </div>
+              </div>
+              <div id="parents-panel" class="conditional-panel hidden">
+                <div class="grid">
+                  <div class="field"><label for="nombre_padre_1">Nombre del papá</label><input id="nombre_padre_1" name="nombre_padre_1" class="control"></div>
+                  <div class="field"><label for="nombre_madre_1">Nombre de la mamá</label><input id="nombre_madre_1" name="nombre_madre_1" class="control"></div>
+                  <div class="field span-2">
+                    <span class="field-label">¿Desean añadir los padres de un segundo festejado?</span>
+                    <div class="choice-row">
+                      <label class="choice"><input type="radio" name="incluir_segundos_padres" value="Sí"> Sí</label>
+                      <label class="choice"><input type="radio" name="incluir_segundos_padres" value="No"> No</label>
+                    </div>
+                  </div>
+                  <div id="second-parents-panel" class="conditional-panel hidden">
+                    <div class="grid">
+                      <div class="field"><label for="nombre_padre_2">Nombre del segundo papá</label><input id="nombre_padre_2" name="nombre_padre_2" class="control"></div>
+                      <div class="field"><label for="nombre_madre_2">Nombre de la segunda mamá</label><input id="nombre_madre_2" name="nombre_madre_2" class="control"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field span-2">
+                <span class="field-label">¿Desean incluir padrinos o corte de honor?</span>
+                <div class="choice-row">
+                  <label class="choice"><input type="radio" name="incluir_padrinos_corte" value="Sí"> Sí</label>
+                  <label class="choice"><input type="radio" name="incluir_padrinos_corte" value="No"> No</label>
+                </div>
+              </div>
+              <div id="honor-panel" class="conditional-panel hidden">
+                <div class="grid">
+                  <div class="field"><label for="padrinos">Padrinos</label><textarea id="padrinos" name="padrinos" class="control" placeholder="Nombres y función de cada padrino"></textarea></div>
+                  <div class="field"><label for="corte_honor">Corte de honor</label><textarea id="corte_honor" name="corte_honor" class="control" placeholder="Nombres de damas, chambelanes u otros integrantes"></textarea></div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -559,8 +610,8 @@
               <div class="field span-2"><label for="link_youtube">Enlace de YouTube</label><input id="link_youtube" name="link_youtube" class="control" type="url" placeholder="https://youtube.com/..."></div>
               <div class="field span-2 upload-zone">
                 <label for="fotos_inspiracion">Fotografías de inspiración</label>
-                <input id="fotos_inspiracion" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-category="inspiracion">
-                <p class="upload-help">JPG, PNG, WEBP o HEIC. Máximo 7 MB por imagen y 8 imágenes por guardado.</p>
+                <input id="fotos_inspiracion" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-category="inspiracion" data-max-files="6">
+                <p class="upload-help">Pueden agregar hasta 6 imágenes JPG, PNG, WEBP o HEIC, con un máximo de 7 MB cada una.</p>
               </div>
             </div>
           </div>
@@ -570,21 +621,14 @@
           <span class="section-number">09</span>
           <div>
             <div class="section-heading">
-              <h2 class="serif">Material visual</h2>
-              <p>Sus fotografías y decisiones para los recursos visuales de la invitación.</p>
+              <h2 class="serif">Fotografías del festejo</h2>
+              <p>Imágenes de los festejados que les gustaría integrar en su invitación.</p>
             </div>
             <div class="grid">
-              <div class="field upload-zone">
+              <div class="field span-2 upload-zone">
                 <label for="fotos_novios">Fotografías de la pareja</label>
                 <input id="fotos_novios" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-category="pareja">
                 <p class="upload-help">Las imágenes se guardarán en su carpeta privada de Drive.</p>
-              </div>
-              <div class="field">
-                <span class="field-label">¿Incluir cuenta regresiva?</span>
-                <div class="choice-row">
-                  <label class="choice"><input type="radio" name="incluir_cuenta_regresiva" value="Sí"> Sí</label>
-                  <label class="choice"><input type="radio" name="incluir_cuenta_regresiva" value="No"> No</label>
-                </div>
               </div>
               <div id="uploaded-photos" class="field span-2 photo-list"></div>
             </div>
@@ -595,17 +639,29 @@
           <span class="section-number">10</span>
           <div>
             <div class="section-heading">
+              <h2 class="serif">Cuenta regresiva</h2>
+              <p>Decidan si desean destacar los días que faltan para su celebración.</p>
+            </div>
+            <div class="field">
+              <span class="field-label">¿Desean incluir una cuenta regresiva en su invitación?</span>
+              <div class="choice-row">
+                <label class="choice"><input type="radio" name="incluir_cuenta_regresiva" value="Sí"> Sí</label>
+                <label class="choice"><input type="radio" name="incluir_cuenta_regresiva" value="No"> No</label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card">
+          <span class="section-number">11</span>
+          <div>
+            <div class="section-heading">
               <h2 class="serif">Detalles finales</h2>
               <p>Todo aquello que no puede faltar o que debamos tener especialmente presente.</p>
             </div>
             <div class="grid">
               <div class="field"><label for="imprescindibles">Detalles imprescindibles</label><textarea id="imprescindibles" name="imprescindibles" class="control" placeholder="Frases, símbolos, personas o tradiciones"></textarea></div>
               <div class="field"><label for="notas_finales">Notas finales</label><textarea id="notas_finales" name="notas_finales" class="control"></textarea></div>
-              <div class="field span-2 upload-zone">
-                <label for="fotos_extras">Fotografías adicionales</label>
-                <input id="fotos_extras" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-category="adicional">
-                <p class="upload-help">Pueden seleccionar varias imágenes. Se subirán al presionar Guardar.</p>
-              </div>
             </div>
           </div>
         </section>
@@ -742,6 +798,24 @@
       }
       $("schedule-items").innerHTML = "";
       if (Array.isArray(data.momentos_extra)) data.momentos_extra.forEach(addScheduleItem);
+      updateConditionalPanels();
+    }
+
+    function selectedRadio(name) {
+      return weddingForm.querySelector(`input[name="${name}"]:checked`)?.value || "";
+    }
+
+    function updateConditionalPanels() {
+      const showParents = selectedRadio("incluir_padres") === "Sí";
+      $("parents-panel").classList.toggle("hidden", !showParents);
+      $("second-parents-panel").classList.toggle(
+        "hidden",
+        !showParents || selectedRadio("incluir_segundos_padres") !== "Sí"
+      );
+      $("honor-panel").classList.toggle(
+        "hidden",
+        selectedRadio("incluir_padrinos_corte") !== "Sí"
+      );
     }
 
     function addScheduleItem(item = {}) {
@@ -772,6 +846,12 @@
 
     function validateFiles(items) {
       if (items.length > MAX_UPLOADS) throw new Error(`Selecciona un máximo de ${MAX_UPLOADS} imágenes por guardado.`);
+      for (const input of fileInputs) {
+        const maximum = Number(input.dataset.maxFiles || 0);
+        if (maximum && input.files.length > maximum) {
+          throw new Error(`En fotografías de inspiración puedes seleccionar un máximo de ${maximum} imágenes.`);
+        }
+      }
       for (const { file } of items) {
         if (file.size > MAX_FILE_BYTES) throw new Error(`${file.name} supera el límite de 7 MB.`);
         if (!/^image\/(jpeg|png|webp|heic|heif)$/i.test(file.type)) throw new Error(`${file.name} no tiene un formato permitido.`);
@@ -873,6 +953,7 @@
     weddingForm.addEventListener("change", () => {
       dirty = true;
       status("Cambios pendientes");
+      updateConditionalPanels();
     });
     weddingForm.addEventListener("submit", event => {
       event.preventDefault();
