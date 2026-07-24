@@ -1,607 +1,918 @@
 <!doctype html>
-<html lang="es-MX"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260723-05-e9a76f4"}');</script><script src="/_sdk/e358eac22bd01364.telemetry_sdk.js" integrity="sha512-KPxp3rw4K8Nu9ceWJc3gyM7srgaZxiFWOVbyu260EYzzAqdz10mfo5xyXrCx+wEKtGo77JbtmwXvFLbwrGzwvw=="></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Datos de Invitación</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <script src="/_sdk/935a53bc2e11fb8d.data_sdk.js" integrity="sha512-qr2oyPnEys1WebcOABaRh6hG77r5PWpqeWW6JTKbRJqly/INsfBi31CVNlTmHqjgeLpkVmmHZJUdxSx/32tOFQ=="></script>
-  <script src="/_sdk/c939c145c3c74230.editing_sdk.js" integrity="sha512-jh2pv/gl9Gzzn5dxfzwQO4wkqtnAQIim+LIUDYfVu2cdqPkQV2MqbjsDUW5IYbrSZFjRlOBrIWzlvWDXQYxOjg=="></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,500&amp;display=swap" rel="stylesheet">
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portal privado de clientes de Fela Paper Atelier.">
+  <title>Portal de clientes | Fela Paper Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
   <style>
-    :root{--ink:#342b2b;--wine:#743f4a;--wine-dark:#552c35;--sage:#8b9882;--paper:#fffdf9;--line:#dfd4c6;--muted:#786d68}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink)}
-    input,textarea,select,button{font:inherit}.app-shell{width:100%;min-height:100%;position:relative;overflow:hidden}
-    .app-shell:before,.app-shell:after{content:"";position:fixed;z-index:0;border-radius:999px;pointer-events:none}
-    .app-shell:before{width:26rem;height:26rem;right:-13rem;top:10rem;background:rgba(139,152,130,.12)}
-    .app-shell:after{width:22rem;height:22rem;left:-12rem;bottom:4rem;background:rgba(116,63,74,.08)}
-    .content-layer{position:relative;z-index:1}.editorial-title{font-family:"Playfair Display",serif;text-wrap:balance}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);min-height:31rem}
-    .hero-photo-wrap{position:relative;min-height:31rem;overflow:hidden}.hero-photo-wrap:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(52,43,43,.04),rgba(52,43,43,.16))}
-    .hero-photo{width:100%;height:100%;min-height:31rem;object-fit:cover;display:block}.fine-rule{width:4.5rem;height:1px;background:currentColor;opacity:.55}
-    .form-card{border:1px solid var(--line);box-shadow:0 18px 50px rgba(70,51,43,.06)}
-    .section-number{min-width:2.6rem;height:2.6rem;border-radius:999px;display:grid;place-items:center;background:#f0e4df;color:var(--wine);font-family:"Playfair Display",serif;font-weight:600}
-    .field-label{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.55rem;font-weight:600}
-    .field-control{width:100%;border:1px solid #d9cdbf;border-radius:.85rem;background:rgba(255,255,255,.9);color:var(--ink);padding:.84rem .95rem;outline:none;transition:.18s}
-    .field-control:hover{border-color:#bba99a;background:#fff}.field-control:focus{border-color:var(--wine);box-shadow:0 0 0 3px rgba(116,63,74,.13);background:#fff}
-    textarea.field-control{min-height:7rem;resize:vertical}.compact-textarea{min-height:5.5rem!important}
-    .map-card{background-color:#eee7dc;background-image:linear-gradient(rgba(116,63,74,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(116,63,74,.07) 1px,transparent 1px);background-size:26px 26px}
-    .choice-card{display:flex;align-items:center;gap:.65rem;border:1px solid #d9cdbf;border-radius:.85rem;padding:.8rem .95rem;background:#fff;cursor:pointer;transition:.18s}
-    .choice-card:has(input:checked){border-color:var(--wine);box-shadow:0 0 0 3px rgba(116,63,74,.1)}.choice-card input{accent-color:var(--wine)}
-    .file-control::file-selector-button{border:0;border-radius:999px;background:#eee5dd;color:var(--wine-dark);padding:.55rem .8rem;margin-right:.75rem;font-weight:700;cursor:pointer}
-    .primary-button,.secondary-button{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;border-radius:999px;min-height:3rem;padding:.75rem 1.2rem;font-weight:700;transition:.18s}
-    .primary-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 24px rgba(85,44,53,.22)}.secondary-button:hover:not(:disabled){transform:translateY(-1px)}
-    button:disabled{cursor:not-allowed;opacity:.62}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid rgba(116,63,74,.3);outline-offset:3px}
-    .reveal{opacity:0;transform:translateY(16px);animation:reveal .65s ease forwards}.delay-1{animation-delay:.08s}.delay-2{animation-delay:.16s}
-    @keyframes reveal{to{opacity:1;transform:translateY(0)}}.spinner{width:1.05rem;height:1.05rem;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-    @media(max-width:850px){.hero-grid{grid-template-columns:1fr}.hero-photo-wrap,.hero-photo{min-height:21rem}}
-    @media(max-width:520px){.form-card{border-radius:1.1rem}.field-label{align-items:flex-start}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;animation:none}.primary-button,.secondary-button{transition:none}}
+    :root {
+      --ink: #352d2b;
+      --wine: #74434d;
+      --wine-dark: #512d35;
+      --sage: #7e8b75;
+      --paper: #fffdf8;
+      --cream: #f5efe5;
+      --sand: #cdbdad;
+      --line: #ddd0c1;
+      --muted: #776c67;
+      --success: #55704f;
+      --danger: #9a3e42;
+      --shadow: 0 22px 65px rgba(76, 55, 46, .1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: "DM Sans", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 90% 12%, rgba(116, 67, 77, .1), transparent 25rem),
+        radial-gradient(circle at 5% 85%, rgba(126, 139, 117, .14), transparent 28rem);
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: wait; opacity: .65; }
+    .hidden { display: none !important; }
+    .serif { font-family: "Playfair Display", serif; }
+    .eyebrow {
+      margin: 0 0 .7rem;
+      color: var(--wine);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .screen {
+      min-height: 100vh;
+      padding: 1.25rem;
+    }
+    .login-screen {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(22rem, .92fr);
+      padding: 0;
+      background: var(--paper);
+    }
+    .login-intro {
+      position: relative;
+      display: flex;
+      min-height: 100vh;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: clamp(2rem, 6vw, 6rem);
+      color: #fffaf3;
+      background:
+        linear-gradient(145deg, rgba(53, 45, 43, .12), rgba(53, 45, 43, .86)),
+        linear-gradient(135deg, #b5a18e, #705057);
+    }
+    .login-intro::before, .login-intro::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 999px;
+    }
+    .login-intro::before { width: 30rem; height: 30rem; top: -12rem; right: -10rem; }
+    .login-intro::after { width: 17rem; height: 17rem; left: -7rem; bottom: 16rem; }
+    .brand {
+      position: absolute;
+      top: clamp(2rem, 5vw, 4rem);
+      left: clamp(2rem, 6vw, 6rem);
+      z-index: 1;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.25rem, 2vw, 1.8rem);
+      letter-spacing: .04em;
+    }
+    .intro-copy { position: relative; z-index: 1; max-width: 42rem; }
+    .intro-copy h1 {
+      max-width: 10ch;
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      font-weight: 500;
+      line-height: .98;
+    }
+    .intro-copy p {
+      max-width: 38rem;
+      margin: 1.5rem 0 0;
+      color: rgba(255, 250, 243, .8);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.7;
+    }
+    .login-panel {
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: clamp(2rem, 6vw, 5rem);
+    }
+    .login-card { width: min(100%, 27rem); }
+    .login-card h2 {
+      margin: 0;
+      font-size: clamp(2.25rem, 4vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.05;
+    }
+    .login-card > p:not(.eyebrow) { color: var(--muted); line-height: 1.65; }
+    .field { margin-top: 1.2rem; }
+    .field label, .field-label {
+      display: block;
+      margin-bottom: .5rem;
+      color: #493f3c;
+      font-size: .88rem;
+      font-weight: 700;
+    }
+    .control {
+      width: 100%;
+      min-height: 3.15rem;
+      border: 1px solid var(--line);
+      border-radius: .85rem;
+      outline: none;
+      background: rgba(255, 255, 255, .86);
+      color: var(--ink);
+      padding: .8rem .95rem;
+      transition: border .18s, box-shadow .18s, background .18s;
+    }
+    textarea.control { min-height: 7rem; resize: vertical; }
+    .control:focus {
+      border-color: var(--wine);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(116, 67, 77, .12);
+    }
+    .primary, .secondary, .quiet {
+      display: inline-flex;
+      min-height: 3rem;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      border-radius: 999px;
+      padding: .75rem 1.25rem;
+      font-weight: 700;
+      transition: transform .18s, box-shadow .18s, background .18s;
+    }
+    .primary {
+      border: 1px solid var(--wine);
+      background: var(--wine);
+      color: #fff;
+    }
+    .primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(81, 45, 53, .22); }
+    .secondary { border: 1px solid var(--wine); background: transparent; color: var(--wine); }
+    .quiet { min-height: 2.5rem; border: 0; background: transparent; color: var(--muted); }
+    .full { width: 100%; margin-top: 1.5rem; }
+    .message {
+      margin-top: 1rem;
+      border: 1px solid #edc6c6;
+      border-radius: .8rem;
+      background: #fff1f1;
+      color: var(--danger);
+      padding: .8rem .9rem;
+      font-size: .88rem;
+    }
+    .portal { min-height: 100vh; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(221, 208, 193, .8);
+      background: rgba(255, 253, 248, .92);
+      padding: .9rem clamp(1rem, 4vw, 3.5rem);
+      backdrop-filter: blur(16px);
+    }
+    .topbar-brand { font-family: "Playfair Display", serif; font-size: 1.25rem; font-weight: 600; }
+    .topbar-actions { display: flex; align-items: center; gap: .75rem; }
+    .save-status {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 600;
+    }
+    .save-status::before {
+      content: "";
+      width: .48rem;
+      height: .48rem;
+      border-radius: 50%;
+      background: #b0a69d;
+    }
+    .save-status.saving::before { background: #d29a4b; animation: pulse 1s infinite; }
+    .save-status.saved::before { background: var(--success); }
+    .save-status.error::before { background: var(--danger); }
+    @keyframes pulse { 50% { opacity: .35; } }
+    .portal-hero {
+      padding: clamp(3rem, 7vw, 6.5rem) 1.25rem clamp(4rem, 8vw, 7rem);
+      color: #fffaf3;
+      text-align: center;
+      background: linear-gradient(135deg, #6f474f, #3f3433);
+    }
+    .portal-hero h1 {
+      max-width: 15ch;
+      margin: .5rem auto 1rem;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 500;
+      line-height: 1;
+    }
+    .portal-hero p { max-width: 43rem; margin: auto; color: rgba(255, 250, 243, .75); line-height: 1.7; }
+    .form-wrap { width: min(100% - 2rem, 70rem); margin: -3rem auto 5rem; }
+    .progress-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--paper);
+      padding: 1rem 1.25rem;
+      color: var(--muted);
+      box-shadow: var(--shadow);
+      font-size: .88rem;
+    }
+    .section-card {
+      display: grid;
+      grid-template-columns: 4rem minmax(0, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 1.45rem;
+      background: rgba(255, 253, 248, .95);
+      padding: clamp(1.25rem, 3vw, 2.2rem);
+      box-shadow: 0 12px 40px rgba(76, 55, 46, .055);
+    }
+    .section-number {
+      display: grid;
+      width: 3.15rem;
+      height: 3.15rem;
+      place-items: center;
+      border-radius: 50%;
+      background: #efe2dc;
+      color: var(--wine);
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .section-heading h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.25rem); font-weight: 600; }
+    .section-heading p { margin: .35rem 0 1.4rem; color: var(--muted); line-height: 1.55; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .span-2 { grid-column: span 2; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: .7rem; }
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      border: 1px solid var(--line);
+      border-radius: .8rem;
+      background: #fff;
+      padding: .8rem .9rem;
+    }
+    .choice input { accent-color: var(--wine); }
+    .upload-zone {
+      border: 1px dashed #bba796;
+      border-radius: 1rem;
+      background: #faf5ed;
+      padding: 1rem;
+    }
+    .upload-zone input { width: 100%; }
+    .upload-help, .photo-list { margin: .6rem 0 0; color: var(--muted); font-size: .8rem; line-height: 1.5; }
+    .photo-list a { color: var(--wine); }
+    .schedule-items { display: grid; gap: .75rem; margin-top: .8rem; }
+    .schedule-item { display: grid; grid-template-columns: 1fr 9rem auto; gap: .65rem; align-items: end; }
+    .remove { min-height: 3.15rem; border: 0; background: transparent; color: var(--danger); font-weight: 700; }
+    .form-actions {
+      position: sticky;
+      bottom: 1rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.2rem;
+      border-radius: 1.2rem;
+      background: #352d2b;
+      color: #fff;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 18px 45px rgba(53, 45, 43, .28);
+    }
+    .form-actions p { margin: 0; color: rgba(255,255,255,.72); font-size: .83rem; }
+    .form-actions .primary { flex-shrink: 0; }
+    .toast {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 50;
+      max-width: 24rem;
+      border-radius: .9rem;
+      background: #273025;
+      color: #fff;
+      padding: .9rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    .toast.error { background: #742f33; }
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 253, 248, .92);
+      text-align: center;
+    }
+    .loader {
+      width: 2.2rem;
+      height: 2.2rem;
+      margin: 0 auto 1rem;
+      border: 3px solid #dfd3c6;
+      border-top-color: var(--wine);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 820px) {
+      .login-screen { grid-template-columns: 1fr; }
+      .login-intro { min-height: 42vh; align-items: center; padding-top: 7rem; }
+      .login-panel { min-height: 58vh; }
+      .intro-copy h1 { font-size: clamp(3rem, 14vw, 5rem); }
+    }
+    @media (max-width: 650px) {
+      .screen { padding: 0; }
+      .topbar-brand { font-size: 1rem; }
+      .topbar .save-status { display: none; }
+      .portal-hero { text-align: left; }
+      .portal-hero h1 { margin-left: 0; }
+      .section-card { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .span-2 { grid-column: auto; }
+      .schedule-item { grid-template-columns: 1fr; border-bottom: 1px solid var(--line); padding-bottom: 1rem; }
+      .form-actions { bottom: 0; border-radius: 1rem 1rem 0 0; }
+      .form-actions p { display: none; }
+      .form-actions .primary { width: 100%; }
+      .progress-note { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; }
+    }
   </style>
-  <script src="/_sdk/6030e540d4419216.resizing_sdk.js" type="text/javascript" integrity="sha512-b5KWzyoXsbWP4smq4sftIi6Kts4YVBpBsz0BwCViwbBJkK64a3/Z6ZMdWA+qnplNcXw4mhZeqvQi3mOosiRJdA=="></script>
- </head>
- <body data-template-id="__page-root" style="background: rgb(255, 255, 255);">
- <div id="loginScreen">
-
-    <h1>Bienvenido</h1>
-
-    <input 
-        type="text" 
-        id="usuario" 
-        placeholder="Usuario"
-    >
-
-    <input 
-        type="password" 
-        id="password" 
-        placeholder="Contraseña"
-    >
-
-    <button onclick="iniciarSesion()">
-        Iniciar sesión
-    </button>
-
-    <p id="mensajeLogin"></p>
-
-</div>
-
-
-<div id="panelCliente" style="display:none;">
-
-    <h1 id="nombreCliente"></h1>
-
-    <p id="emailCliente"></p>
-
-    <p id="telefonoCliente"></p>
-
-    <p id="invitadosCliente"></p>
-
-    <p id="comentariosCliente"></p>
-
-</div>
-
-
-<script>
-
-const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycbzR5qd3Hu2BkifUaRF_JPFzXpwNjd66z0hWqxOfXehH1q4BwPxiSy2EKO-VdLLC4HMiGw/exec";
-
-
-async function iniciarSesion() {
-
-    const usuario = document
-        .getElementById("usuario")
-        .value
-        .trim();
-
-    const password = document
-        .getElementById("password")
-        .value
-        .trim();
-
-
-    if (!usuario || !password) {
-
-        document
-            .getElementById("mensajeLogin")
-            .innerText =
-            "Por favor, completa todos los campos.";
-
-        return;
-    }
-
-
-    try {
-
-        const respuesta = await fetch(
-
-            URL_GOOGLE_SCRIPT +
-            "?action=login" +
-            "&usuario=" +
-            encodeURIComponent(usuario) +
-            "&password=" +
-            encodeURIComponent(password)
-
-        );
-
-
-        const datos = await respuesta.json();
-
-
-        if (datos.success) {
-
-
-            document
-                .getElementById("loginScreen")
-                .style
-                .display = "none";
-
-
-            document
-                .getElementById("panelCliente")
-                .style
-                .display = "block";
-
-
-            document
-                .getElementById("nombreCliente")
-                .innerText =
-                datos.cliente.nombre;
-
-
-            document
-                .getElementById("emailCliente")
-                .innerText =
-                datos.cliente.email;
-
-
-            document
-                .getElementById("telefonoCliente")
-                .innerText =
-                datos.cliente.telefono;
-
-
-            document
-                .getElementById("invitadosCliente")
-                .innerText =
-                datos.cliente.invitados;
-
-
-            document
-                .getElementById("comentariosCliente")
-                .innerText =
-                datos.cliente.comentarios;
-
-
-        } else {
-
-
-            document
-                .getElementById("mensajeLogin")
-                .innerText =
-                "Usuario o contraseña incorrectos.";
-
-        }
-
-
-    } catch (error) {
-
-
-        document
-            .getElementById("mensajeLogin")
-            .innerText =
-            "No se pudo conectar con el sistema.";
-
-
-        console.error(error);
-
-    }
-
-}
-
-</script>
-  <div class="app-shell w-full">
-   <div class="content-layer">
-    <div data-template-id="top-header-strip" class="canva-section w-full h-[140px] flex items-center justify-between px-6 sm:px-10 lg:px-16" style="background: rgb(175, 155, 136);"><img data-template-id="top-bar-logo" loading="lazy" class="canva-image h-28 w-40 object-contain" src="canva://MAHMn_RjHyI/1" alt="Logotipo de la invitación"> <img data-template-id="top-bar-right-image" loading="lazy" class="canva-image h-16 w-16 object-cover rounded-sm" src="canva://MAHQKcE9BF4/1" alt="Imagen decorativa cuadrada">
-    </div>
-    <header data-template-id="hero-section" class="canva-header w-full" style="background: rgb(245, 240, 229);">
-     <div class="hero-grid">
-      <div class="flex items-center px-6 py-14 sm:px-10 lg:px-16 xl:px-24">
-       <div class="max-w-2xl reveal">
-        <div class="mb-6 flex items-center gap-4">
-         <span class="fine-rule"></span>
-         <p data-template-id="hero-eyebrow" class="canva-text uppercase" style="color: rgb(69, 58, 56); font-weight: 700; font-style: normal; font-size: 12px; letter-spacing: 0.23rem;">Detalles para un día inolvidable</p>
+</head>
+<body>
+  <main>
+    <section id="login-view" class="login-screen">
+      <div class="login-intro">
+        <div class="brand">Fela Paper Atelier</div>
+        <div class="intro-copy">
+          <p class="eyebrow" style="color:#f0ddd8">Portal privado</p>
+          <h1>Su historia, en cada detalle.</h1>
+          <p>Un espacio pensado para reunir la información, inspiración y fotografías que darán forma a su invitación.</p>
         </div>
-        <h1 data-template-id="hero-title" class="canva-text editorial-title mb-6" style="color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 34px; line-height: 1.05;">CUÉNTANOS CÓMO IMAGINAN SU CELEBRACIÓN</h1>
-        <p data-template-id="hero-description" class="canva-text max-w-xl" style="color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.65;">Completen cada sección con calma. Sus respuestas nos ayudarán a crear una invitación clara, personal y fiel a su historia.</p>
-        <div class="mt-8 flex items-start gap-3">
-         <span class="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#eaded4] text-[#743f4a]"><i data-lucide="heart" style="width:16px"></i></span>
-         <p data-template-id="hero-note" class="canva-text max-w-lg" style="color: rgb(85, 44, 53); font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.5;">Pueden dejar en blanco los datos opcionales que todavía no estén definidos.</p>
-        </div>
-       </div>
       </div>
-      <div class="hero-photo-wrap reveal delay-1">
-       <img data-template-id="hero-image" loading="lazy" class="canva-image hero-photo" src="canva://MAHHEaNqQQg/1" alt="Fotografía editorial de boda">
-      </div>
-     </div>
-    </header>
-    <main class="w-full">
-     <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-      <section id="login-view" aria-labelledby="login-title" class="reveal">
-       <div data-template-id="login-card" class="canva-card form-card mx-auto max-w-xl rounded-3xl p-6 sm:p-10" style="background: rgb(255, 253, 249);">
-        <div class="mb-7 text-center"><span class="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-full bg-[#f0e4df] text-[#743f4a]"><i data-lucide="heart-handshake"></i></span>
-         <p data-template-id="login-kicker" class="canva-text mb-2 uppercase" style="color: rgb(116, 63, 74); font-weight: 700; font-style: normal; font-size: 12px; letter-spacing: 0.3rem;">Acceso a su formulario</p>
-         <h2 id="login-title" data-template-id="login-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 34px;">Comencemos con sus datos</h2>
-         <p data-template-id="login-help" class="canva-text mt-3" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 15px; line-height: 1.5;">Escriban el nombre del cliente y su código privado para identificar esta respuesta.</p>
-        </div>
-        <div id="login-message" class="hidden mb-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert"></div>
-        <form id="login-form" class="space-y-5">
-         <div>
-          <label for="client-name" data-template-id="client-name-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Nombre del cliente · Obligatorio</label><input id="client-name" type="text" required="" autocomplete="name" data-template-id="client-name-input" class="canva-input field-control" placeholder="Ej. Andrea Martínez" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-         </div>
-         <div>
-          <label for="client-code" data-template-id="client-code-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Código privado · Obligatorio</label><input id="client-code" type="text" required="" autocomplete="off" data-template-id="client-code-input" class="canva-input field-control" placeholder="Escribe el código proporcionado" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-         </div><button type="submit" data-template-id="login-button" class="canva-button primary-button w-full" style="background: rgb(116, 63, 74); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Continuar al formulario</button>
+      <div class="login-panel">
+        <form id="login-form" class="login-card">
+          <p class="eyebrow">Bienvenidos</p>
+          <h2 class="serif">Acceso a su proyecto</h2>
+          <p>Ingresen con el ID o nombre del cliente y la contraseña privada que recibieron.</p>
+          <div class="field">
+            <label for="client-identifier">ID o nombre del cliente</label>
+            <input id="client-identifier" class="control" autocomplete="username" placeholder="Ej. cli-001 o Andrea Martínez" required>
+          </div>
+          <div class="field">
+            <label for="client-password">Contraseña</label>
+            <input id="client-password" class="control" type="password" autocomplete="current-password" placeholder="Contraseña privada" required>
+          </div>
+          <button id="login-button" class="primary full" type="submit">Iniciar sesión</button>
+          <div id="login-message" class="message hidden" role="alert"></div>
         </form>
-        <p data-template-id="login-disclosure" class="canva-text mt-5 text-center" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 12px;">Este código identifica su respuesta; no funciona como contraseña ni como autenticación.</p>
-       </div>
-      </section>
-      <div id="form-view" class="hidden">
-       <div class="mb-9 text-center">
-        <p data-template-id="form-kicker" class="canva-text mb-2 uppercase" style="color: rgb(52, 43, 43); font-weight: 700; font-style: normal; font-size: 12px; letter-spacing: 0.55rem;">Formulario de información</p>
-        <h2 id="form-heading" data-template-id="form-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 52px;">Los detalles de su boda</h2>
-        <p data-template-id="form-intro" class="canva-text mx-auto mt-3 max-w-2xl" style="color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 15px; line-height: 1.55;">Sigan el formulario de principio a fin. Las etiquetas indican qué información necesitamos y qué pueden completar después.</p>
-        <div class="mt-5 flex justify-center gap-3">
-         <span data-template-id="required-legend" class="canva-tag rounded-full px-3 py-1" style="background: rgb(240, 228, 223); color: rgb(85, 44, 53); font-weight: 700; font-style: normal; font-size: 12px;">Obligatorio</span><span data-template-id="optional-legend" class="canva-tag rounded-full px-3 py-1" style="background: rgb(232, 236, 228); color: rgb(94, 105, 88); font-weight: 700; font-style: normal; font-size: 12px;">Opcional</span>
+      </div>
+    </section>
+
+    <section id="portal-view" class="portal hidden">
+      <header class="topbar">
+        <div class="topbar-brand">Fela Paper Atelier</div>
+        <div class="topbar-actions">
+          <span id="save-status" class="save-status">Sin cambios</span>
+          <button id="logout-button" type="button" class="quiet">Cerrar sesión</button>
         </div>
-       </div>
-       <div id="global-message" class="hidden mb-5 rounded-xl border px-4 py-3 text-sm" role="alert" aria-live="assertive"></div>
-       <form id="wedding-form" novalidate="" class="space-y-6">
-        <section data-template-id="couple-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+      </header>
+
+      <div class="portal-hero">
+        <p class="eyebrow" style="color:#e6c9c8">Su proyecto</p>
+        <h1 id="welcome-title" class="serif">Los detalles de su celebración</h1>
+        <p>Completen lo que ya tengan definido. Pueden dejar cualquier campo vacío, volver después y continuar exactamente donde se quedaron.</p>
+      </div>
+
+      <form id="wedding-form" class="form-wrap">
+        <div class="progress-note">
+          <span>El borrador se guarda automáticamente cada 20 segundos cuando hay cambios.</span>
+          <span id="last-saved">Todavía no hay un guardado</span>
+        </div>
+
+        <section class="section-card">
           <span class="section-number">01</span>
           <div>
-           <h3 data-template-id="couple-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Datos principales de la pareja</h3>
-           <p data-template-id="couple-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Escriban los nombres exactamente como desean verlos en la invitación.</p>
+            <div class="section-heading">
+              <h2 class="serif">La pareja</h2>
+              <p>Escriban sus nombres exactamente como desean verlos en la invitación.</p>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="nombres_pareja">Nombres completos</label><input id="nombres_pareja" name="nombres_pareja" class="control" placeholder="Andrea Martínez y Carlos Robles"></div>
+              <div class="field"><label for="orden_pareja">Presentación de los nombres</label><input id="orden_pareja" name="orden_pareja" class="control" placeholder="Andrea & Carlos"></div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div>
-           <label for="nombres-pareja" data-template-id="couple-names-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Nombres completos · Obligatorio</label><input id="nombres-pareja" name="nombres_pareja" required="" data-template-id="couple-names-input" class="canva-input field-control" placeholder="Ej. Andrea Martínez y Carlos Robles" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div>
-           <label for="orden-pareja" data-template-id="couple-order-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Orden de los nombres · Obligatorio</label><input id="orden-pareja" name="orden_pareja" required="" data-template-id="couple-order-input" class="canva-input field-control" placeholder="Ej. Andrea &amp; Carlos" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-         </div>
         </section>
-        <section data-template-id="ceremony-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">02</span>
           <div>
-           <h3 data-template-id="ceremony-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Ceremonia</h3>
-           <p data-template-id="ceremony-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Esta sección es opcional. Incluyan la información disponible para evitar confusiones el día del evento.</p>
+            <div class="section-heading">
+              <h2 class="serif">Ceremonia y recepción</h2>
+              <p>Compartan la información disponible del lugar, fecha y horarios.</p>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="fecha_ceremonia">Fecha</label><input id="fecha_ceremonia" name="fecha_ceremonia" class="control" type="date"></div>
+              <div class="field"><label for="hora_ceremonia">Hora</label><input id="hora_ceremonia" name="hora_ceremonia" class="control" type="time"></div>
+              <div class="field"><label for="nombre_lugar">Nombre del lugar</label><input id="nombre_lugar" name="nombre_lugar" class="control" placeholder="Hacienda Los Olivos"></div>
+              <div class="field"><label for="direccion_completa">Dirección</label><input id="direccion_completa" name="direccion_completa" class="control" placeholder="Calle, colonia, ciudad y estado"></div>
+              <div class="field span-2"><label for="enlace_mapa">Enlace del mapa</label><input id="enlace_mapa" name="enlace_mapa" class="control" type="url" placeholder="https://maps.google.com/..."></div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div>
-           <label for="fecha-ceremonia" data-template-id="ceremony-date-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Fecha exacta · Opcional</label><input id="fecha-ceremonia" name="fecha_ceremonia" type="date" data-template-id="ceremony-date-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43);">
-          </div>
-          <div>
-           <label for="hora-ceremonia" data-template-id="ceremony-time-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Hora de inicio · Opcional</label><input id="hora-ceremonia" name="hora_ceremonia" type="time" data-template-id="ceremony-time-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43);">
-          </div>
-          <div>
-           <label for="nombre-lugar" data-template-id="venue-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Nombre del lugar · Opcional</label><input id="nombre-lugar" name="nombre_lugar" data-template-id="venue-input" class="canva-input field-control" placeholder="Ej. Hacienda Los Olivos" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div>
-           <label for="direccion-completa" data-template-id="address-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Dirección completa · Opcional</label><input id="direccion-completa" name="direccion_completa" data-template-id="address-input" class="canva-input field-control" placeholder="Calle, número, colonia, ciudad y estado" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div class="md:col-span-2">
-           <label for="enlace-mapa" data-template-id="map-link-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Enlace del mapa · Opcional</label>
-           <div class="flex flex-col gap-3 sm:flex-row">
-            <input id="enlace-mapa" name="enlace_mapa" type="url" data-template-id="map-link-input" class="canva-input field-control flex-1" placeholder="https://maps.google.com/..." style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;"><button id="open-map-button" type="button" data-template-id="open-map-button" class="canva-button secondary-button border border-[#743f4a]" style="background: rgb(255, 253, 249); color: rgb(116, 63, 74); font-weight: 700; font-style: normal; font-size: 14px;">Abrir mapa</button>
-           </div>
-           <p data-template-id="map-help" class="canva-text mt-2" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 12px;">Copia el enlace desde Google Maps, Apple Maps u otro servicio.</p>
-          </div>
-         </div>
-         <div class="map-card mt-6 flex items-center gap-4 rounded-2xl border border-[#d8ccbd] p-5">
-          <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#743f4a] text-white"><i data-lucide="map-pin"></i></span>
-          <p data-template-id="map-card-text" class="canva-text" style="color: rgb(101, 91, 87); font-weight: 400; font-style: normal; font-size: 14px;">Este enlace será el acceso directo para que sus invitados consulten la ruta.</p>
-         </div>
         </section>
-        <section data-template-id="rsvp-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">03</span>
           <div>
-           <h3 data-template-id="rsvp-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">RSVP</h3>
-           <p data-template-id="rsvp-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Definan cómo recopilarán las confirmaciones y la información de los asistentes.</p>
+            <div class="section-heading">
+              <h2 class="serif">Confirmación de asistencia</h2>
+              <p>Definan cómo desean recibir confirmaciones y qué mensaje verán sus invitados.</p>
+            </div>
+            <div class="grid">
+              <div class="field">
+                <label for="tipo_confirmacion">Tipo de confirmación</label>
+                <select id="tipo_confirmacion" name="tipo_confirmacion" class="control">
+                  <option value="">Todavía no definido</option>
+                  <option>Sin confirmación</option>
+                  <option>Respuesta de WhatsApp</option>
+                  <option>Confirmación sencilla conectada a hoja de cálculo</option>
+                  <option>Formulario con pases incluidos conectado a hoja de cálculo</option>
+                </select>
+              </div>
+              <div class="field"><label for="fecha_limite_rsvp">Fecha límite</label><input id="fecha_limite_rsvp" name="fecha_limite_rsvp" class="control" type="date"></div>
+              <div class="field span-2"><label for="nota_invitados">Nota para los invitados</label><input id="nota_invitados" name="nota_invitados" class="control" placeholder="Agradecemos confirmar antes de la fecha límite"></div>
+              <div class="field span-2"><label for="comentarios_rsvp">Restricciones, alergias u observaciones</label><textarea id="comentarios_rsvp" name="comentarios_rsvp" class="control"></textarea></div>
+              <div class="field span-2">
+                <span class="field-label">Política de niños</span>
+                <div class="choice-row">
+                  <label class="choice"><input type="checkbox" name="politica_ninos_no" value="Sí"> Evento solo para adultos</label>
+                  <label class="choice"><input type="checkbox" name="politica_ninos_guarderia" value="Sí"> Habrá servicio de guardería</label>
+                </div>
+              </div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div class="md:col-span-2">
-           <label for="confirmacion-rsvp" data-template-id="rsvp-confirm-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Confirmación de asistencia · Obligatorio</label><select id="confirmacion-rsvp" name="confirmacion_rsvp" required="" class="field-control"><option value="">Selecciona una opción</option><option>Sin confirmación</option><option>Respuesta de WhatsApp</option><option>Confirmación sencilla conectada a hoja de cálculo</option><option>Formulario con pases incluidos conectado a hoja de cálculo</option></select>
-          </div>
-          <div>
-           <label for="fecha-limite-rsvp" data-template-id="rsvp-date-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Fecha límite · Opcional</label><input id="fecha-limite-rsvp" name="fecha_limite_rsvp" type="date" data-template-id="rsvp-date-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43);">
-          </div>
-          <div>
-           <label for="comentarios-rsvp" data-template-id="dietary-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Comentarios o restricciones · Opcional</label><textarea id="comentarios-rsvp" name="comentarios_rsvp" data-template-id="dietary-input" class="canva-input field-control compact-textarea" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Alergias, menú vegetariano u otra observación</textarea>
-          </div>
-          <div id="designer-notice" class="hidden md:col-span-2 rounded-2xl bg-[#f0e4df] p-4">
-           <p data-template-id="designer-notice-text" class="canva-text" style="color: rgb(116, 63, 74); font-weight: 400; font-style: normal; font-size: 13px;">El formulario con pases requiere configuración personalizada para asignar los pases correspondientes por invitado.</p>
-          </div>
-          <div class="md:col-span-2">
-           <span data-template-id="children-policy-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Política de niños · Opcional</span>
-           <div class="grid gap-3 sm:grid-cols-2">
-            <label class="choice-card"><input type="checkbox" name="politica_ninos_no"><span data-template-id="children-no-kids" class="canva-text" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 16px;">No niños (evento de adultos)</span></label><label class="choice-card"><input type="checkbox" name="politica_ninos_guarderia"><span data-template-id="children-nursery" class="canva-text" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 16px;">Servicio de guardería disponible</span></label>
-           </div>
-          </div>
-          <div class="md:col-span-2">
-           <label for="nota-invitados" data-template-id="guest-note-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Nota para los invitados · Opcional</label><input id="nota-invitados" name="nota_invitados" data-template-id="guest-note-input" class="canva-input field-control" placeholder="Ej. Agradecemos confirmar antes de la fecha límite" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-         </div>
         </section>
-        <section data-template-id="dress-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">04</span>
           <div>
-           <h3 data-template-id="dress-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Código de vestimenta</h3>
-           <p data-template-id="dress-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Den una indicación breve y fácil de interpretar.</p>
+            <div class="section-heading">
+              <h2 class="serif">Vestimenta</h2>
+              <p>Una indicación clara ayuda a sus invitados a elegir con confianza.</p>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="dress_code">Código de vestimenta</label><input id="dress_code" name="dress_code" class="control" placeholder="Formal, jardín o etiqueta"></div>
+              <div class="field"><label for="nota_estilo">Referencia de estilo</label><input id="nota_estilo" name="nota_estilo" class="control" placeholder="Tonos neutros; evitar blanco"></div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div>
-           <label for="dress-code" data-template-id="dress-code-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Dress code · Obligatorio</label><input id="dress-code" name="dress_code" required="" data-template-id="dress-code-input" class="canva-input field-control" placeholder="Ej. Formal, jardín o etiqueta" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div>
-           <label for="nota-estilo" data-template-id="style-note-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Referencia de estilo · Opcional</label><input id="nota-estilo" name="nota_estilo" data-template-id="style-note-input" class="canva-input field-control" placeholder="Ej. Tonos neutros; evitar blanco" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-         </div>
         </section>
-        <section data-template-id="schedule-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">05</span>
           <div>
-           <h3 data-template-id="schedule-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Horario del día</h3>
-           <p data-template-id="schedule-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Agreguen la hora prevista para cada momento de la celebración.</p>
+            <div class="section-heading">
+              <h2 class="serif">Horario del día</h2>
+              <p>Agreguen los momentos principales y cualquier actividad especial.</p>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="hora_ceremonia_evento">Ceremonia</label><input id="hora_ceremonia_evento" name="hora_ceremonia_evento" class="control" type="time"></div>
+              <div class="field"><label for="hora_coctel">Cóctel</label><input id="hora_coctel" name="hora_coctel" class="control" type="time"></div>
+              <div class="field"><label for="hora_cena">Cena</label><input id="hora_cena" name="hora_cena" class="control" type="time"></div>
+              <div class="field"><label for="hora_fiesta">Fiesta</label><input id="hora_fiesta" name="hora_fiesta" class="control" type="time"></div>
+            </div>
+            <div id="schedule-items" class="schedule-items"></div>
+            <button id="add-schedule" type="button" class="secondary" style="margin-top:1rem">Agregar otro momento</button>
           </div>
-         </div>
-         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-           <label for="hora-ceremonia-evento" data-template-id="timeline-ceremony-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Ceremonia · Obligatorio</label><input id="hora-ceremonia-evento" name="hora_ceremonia_evento" type="time" required="" data-template-id="timeline-ceremony-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43);">
-          </div>
-          <div>
-           <label for="hora-coctel" data-template-id="cocktail-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Cóctel · Opcional</label><input id="hora-coctel" name="hora_coctel" type="time" data-template-id="cocktail-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43);">
-          </div>
-          <div>
-           <label for="hora-cena" data-template-id="dinner-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Cena · Opcional</label><input id="hora-cena" name="hora_cena" type="time" data-template-id="dinner-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43);">
-          </div>
-          <div>
-           <label for="hora-fiesta" data-template-id="party-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Fiesta · Opcional</label><input id="hora-fiesta" name="hora_fiesta" type="time" data-template-id="party-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43);">
-          </div>
-         </div>
-         <div id="dynamic-schedule" class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div><button id="add-schedule" type="button" data-template-id="add-schedule-button" class="canva-button secondary-button mt-6 border border-[#743f4a]" style="background: rgb(255, 253, 249); color: rgb(116, 63, 74); font-weight: 700; font-style: normal; font-size: 14px;">Agregar momento +</button>
         </section>
-        <section data-template-id="travel-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">06</span>
           <div>
-           <h3 data-template-id="travel-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Alojamiento y transporte</h3>
-           <p data-template-id="travel-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Compartan recomendaciones que hagan más fácil la visita de sus invitados.</p>
+            <div class="section-heading">
+              <h2 class="serif">Alojamiento y transporte</h2>
+              <p>Recomendaciones que harán más sencilla la visita de sus invitados.</p>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="sugerencias_alojamiento">Alojamiento</label><textarea id="sugerencias_alojamiento" name="sugerencias_alojamiento" class="control" placeholder="Hoteles, tarifas o enlaces de reservación"></textarea></div>
+              <div class="field"><label for="detalles_transporte">Transporte</label><textarea id="detalles_transporte" name="detalles_transporte" class="control" placeholder="Horarios, estacionamiento o taxis"></textarea></div>
+              <div class="field span-2"><label for="indicaciones_especiales">Indicaciones especiales</label><textarea id="indicaciones_especiales" name="indicaciones_especiales" class="control"></textarea></div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div>
-           <label for="alojamiento" data-template-id="lodging-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Alojamiento · Opcional</label><textarea id="alojamiento" name="sugerencias_alojamiento" data-template-id="lodging-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Hoteles, tarifas especiales o enlaces de reservación</textarea>
-          </div>
-          <div>
-           <label for="transporte" data-template-id="transport-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Transporte · Opcional</label><textarea id="transporte" name="detalles_transporte" data-template-id="transport-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Horarios, punto de encuentro, estacionamiento o taxis</textarea>
-          </div>
-          <div class="md:col-span-2">
-           <label for="indicaciones" data-template-id="directions-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Indicaciones especiales · Opcional</label><textarea id="indicaciones" name="indicaciones_especiales" data-template-id="directions-input" class="canva-input field-control compact-textarea" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Accesos, recomendaciones de llegada o avisos importantes</textarea>
-          </div>
-         </div>
         </section>
-        <section data-template-id="gifts-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">07</span>
           <div>
-           <h3 data-template-id="gifts-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Regalos</h3>
-           <p data-template-id="gifts-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Escriban únicamente la opción que desean comunicar a sus invitados.</p>
+            <div class="section-heading">
+              <h2 class="serif">Regalos</h2>
+              <p>Incluyan únicamente las opciones que deseen compartir.</p>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="sugerencia_regalo">Mensaje o sugerencia</label><input id="sugerencia_regalo" name="sugerencia_regalo" class="control" placeholder="Su presencia es nuestro mejor regalo"></div>
+              <div class="field"><label for="mesa_regalo">Mesa de regalos</label><input id="mesa_regalo" name="mesa_regalo" class="control" placeholder="Nombre o enlace"></div>
+              <div class="field"><label for="tienda_codigo">Tienda y código</label><input id="tienda_codigo" name="tienda_codigo" class="control" placeholder="Liverpool · Evento 123456"></div>
+              <div class="field"><label for="cuenta_banco">Cuenta o sobre</label><input id="cuenta_banco" name="cuenta_banco" class="control" placeholder="Referencia para transferencia o sobre"></div>
+              <div class="field span-2"><label for="instrucciones_regalo">Instrucciones para invitados</label><textarea id="instrucciones_regalo" name="instrucciones_regalo" class="control"></textarea></div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div>
-           <label for="sugerencia-regalo" data-template-id="gift-suggestion-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Sugerencia de regalo · Opcional</label><input id="sugerencia-regalo" name="sugerencia_regalo" data-template-id="gift-suggestion-input" class="canva-input field-control" placeholder="Ej. Su presencia es nuestro mejor regalo" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div>
-           <label for="mesa-regalo" data-template-id="registry-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Mesa de regalo · Opcional</label><input id="mesa-regalo" name="mesa_regalo" data-template-id="registry-input" class="canva-input field-control" placeholder="Nombre o enlace de la mesa" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div>
-           <label for="tienda-codigo" data-template-id="store-code-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Tienda y código · Opcional</label><input id="tienda-codigo" name="tienda_codigo" data-template-id="store-code-input" class="canva-input field-control" placeholder="Ej. Liverpool · Evento 123456" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div>
-           <label for="cuenta-banco" data-template-id="bank-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Cuenta o sobre · Opcional</label><input id="cuenta-banco" name="cuenta_banco" data-template-id="bank-input" class="canva-input field-control" placeholder="Referencia acordada para transferencia o sobre" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div class="md:col-span-2">
-           <label for="instrucciones-regalo" data-template-id="gift-instructions-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Instrucciones para invitados · Opcional</label><textarea id="instrucciones-regalo" name="instrucciones_regalo" data-template-id="gift-instructions-input" class="canva-input field-control compact-textarea" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Escribe una indicación clara, breve y cortés</textarea>
-          </div>
-         </div>
         </section>
-        <section data-template-id="style-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">08</span>
           <div>
-           <h3 data-template-id="style-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Inspiración y estilo</h3>
-           <p data-template-id="style-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Cuéntennos qué ambiente visual y musical desean transmitir.</p>
+            <div class="section-heading">
+              <h2 class="serif">Inspiración y estilo</h2>
+              <p>Colores, referencias, música y fotografías que expresen la atmósfera que imaginan.</p>
+            </div>
+            <div class="grid">
+              <div class="field span-2"><label for="inspiracion">Inspiración</label><textarea id="inspiracion" name="inspiracion" class="control" placeholder="Estilo, flores, lugares o conceptos que les gusten"></textarea></div>
+              <div class="field"><label for="paleta_colores">Paleta de colores</label><input id="paleta_colores" name="paleta_colores" class="control" placeholder="Marfil, verde salvia y vino"></div>
+              <div class="field"><label for="cancion">Canción</label><input id="cancion" name="cancion" class="control" placeholder="Título y artista"></div>
+              <div class="field span-2"><label for="link_youtube">Enlace de YouTube</label><input id="link_youtube" name="link_youtube" class="control" type="url" placeholder="https://youtube.com/..."></div>
+              <div class="field span-2 upload-zone">
+                <label for="fotos_inspiracion">Fotografías de inspiración</label>
+                <input id="fotos_inspiracion" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-category="inspiracion">
+                <p class="upload-help">JPG, PNG, WEBP o HEIC. Máximo 7 MB por imagen y 8 imágenes por guardado.</p>
+              </div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div class="md:col-span-2">
-           <label for="inspiracion" data-template-id="inspiration-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Inspiración · Opcional</label><textarea id="inspiracion" name="inspiracion" data-template-id="inspiration-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Estilo, referencias, flores, lugares o conceptos que les gusten</textarea>
-          </div>
-          <div>
-           <label for="paleta-colores" data-template-id="palette-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Paleta de colores · Opcional</label><input id="paleta-colores" name="paleta_colores" data-template-id="palette-input" class="canva-input field-control" placeholder="Ej. Marfil, verde salvia y vino" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div>
-           <label for="cancion" data-template-id="song-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Canción · Opcional</label><input id="cancion" name="cancion" data-template-id="song-input" class="canva-input field-control" placeholder="Título y artista" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div class="md:col-span-2">
-           <label for="link-youtube" data-template-id="youtube-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Link de YouTube · Opcional</label><input id="link-youtube" name="link_youtube" type="url" data-template-id="youtube-input" class="canva-input field-control" placeholder="https://youtube.com/..." style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">
-          </div>
-          <div class="md:col-span-2">
-           <label for="fotos-inspiracion" data-template-id="inspiration-photos-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Fotos de inspiración · Opcional</label><input id="fotos-inspiracion" type="file" accept="image/*" multiple="" class="field-control file-control">
-           <p id="inspiration-status" class="mt-2 text-sm font-semibold text-[#743f4a]">Ninguna foto seleccionada.</p>
-          </div>
-         </div>
         </section>
-        <section data-template-id="visual-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">09</span>
           <div>
-           <h3 data-template-id="visual-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Material visual</h3>
-           <p data-template-id="visual-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Seleccionen referencias visuales y decidan si desean una cuenta regresiva.</p>
+            <div class="section-heading">
+              <h2 class="serif">Material visual</h2>
+              <p>Sus fotografías y decisiones para los recursos visuales de la invitación.</p>
+            </div>
+            <div class="grid">
+              <div class="field upload-zone">
+                <label for="fotos_novios">Fotografías de la pareja</label>
+                <input id="fotos_novios" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-category="pareja">
+                <p class="upload-help">Las imágenes se guardarán en su carpeta privada de Drive.</p>
+              </div>
+              <div class="field">
+                <span class="field-label">¿Incluir cuenta regresiva?</span>
+                <div class="choice-row">
+                  <label class="choice"><input type="radio" name="incluir_cuenta_regresiva" value="Sí"> Sí</label>
+                  <label class="choice"><input type="radio" name="incluir_cuenta_regresiva" value="No"> No</label>
+                </div>
+              </div>
+              <div id="uploaded-photos" class="field span-2 photo-list"></div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-6 md:grid-cols-2">
-          <div>
-           <label for="fotos-novios" data-template-id="photos-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Fotos de los novios · Opcional</label><input id="fotos-novios" type="file" accept="image/*" multiple="" class="field-control file-control">
-           <p data-template-id="photos-help" class="canva-text mt-2" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 12px;">Puedes elegir una o varias imágenes. Se registrarán sus nombres como referencia.</p>
-           <p id="photo-status" class="mt-2 text-sm font-semibold text-[#743f4a]">Ninguna foto seleccionada.</p>
-          </div>
-          <fieldset>
-           <legend data-template-id="countdown-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">¿Desean incluir cuenta regresiva? · Opcional</legend>
-           <div class="grid grid-cols-2 gap-3">
-            <label class="choice-card"><input type="radio" name="incluir_cuenta_regresiva" value="Sí"><span data-template-id="countdown-yes" class="canva-text" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 16px;">Sí</span></label><label class="choice-card"><input type="radio" name="incluir_cuenta_regresiva" value="No" checked=""><span data-template-id="countdown-no" class="canva-text" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 16px;">No</span></label>
-           </div>
-          </fieldset>
-         </div>
         </section>
-        <section data-template-id="extras-card" class="canva-card form-card rounded-3xl p-5 sm:p-8" style="background: rgb(207, 193, 179);">
-         <div class="mb-6 flex gap-4">
+
+        <section class="section-card">
           <span class="section-number">10</span>
           <div>
-           <h3 data-template-id="extras-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 600; font-style: normal; font-size: 25px;">Detalles extra</h3>
-           <p data-template-id="extras-help" class="canva-text mt-1" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 14px;">Añadan cualquier elemento importante que no haya aparecido en las secciones anteriores.</p>
+            <div class="section-heading">
+              <h2 class="serif">Detalles finales</h2>
+              <p>Todo aquello que no puede faltar o que debamos tener especialmente presente.</p>
+            </div>
+            <div class="grid">
+              <div class="field"><label for="imprescindibles">Detalles imprescindibles</label><textarea id="imprescindibles" name="imprescindibles" class="control" placeholder="Frases, símbolos, personas o tradiciones"></textarea></div>
+              <div class="field"><label for="notas_finales">Notas finales</label><textarea id="notas_finales" name="notas_finales" class="control"></textarea></div>
+              <div class="field span-2 upload-zone">
+                <label for="fotos_extras">Fotografías adicionales</label>
+                <input id="fotos_extras" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple data-category="adicional">
+                <p class="upload-help">Pueden seleccionar varias imágenes. Se subirán al presionar Guardar.</p>
+              </div>
+            </div>
           </div>
-         </div>
-         <div class="grid gap-5 md:grid-cols-2">
-          <div>
-           <label for="imprescindibles" data-template-id="must-have-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Detalles que no pueden faltar · Opcional</label><textarea id="imprescindibles" name="imprescindibles" data-template-id="must-have-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Frases, símbolos, personas, tradiciones o momentos especiales</textarea>
-          </div>
-          <div>
-           <label for="notas-finales" data-template-id="final-notes-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Observaciones y notas finales · Opcional</label><textarea id="notas-finales" name="notas_finales" data-template-id="final-notes-input" class="canva-input field-control" style="background: rgb(255, 255, 255); color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 16px;">Preferencias, aclaraciones o información adicional</textarea>
-          </div>
-          <div class="md:col-span-2">
-           <label for="fotos-extras" data-template-id="extras-photos-label" class="canva-text field-label" style="color: rgb(69, 58, 56); font-weight: 600; font-style: normal; font-size: 14px;">Fotos adicionales · Opcional</label><input id="fotos-extras" type="file" accept="image/*" multiple="" class="field-control file-control">
-           <p id="extras-status" class="mt-2 text-sm font-semibold text-[#743f4a]">Ninguna foto seleccionada.</p>
-          </div>
-         </div>
         </section>
-        <div data-template-id="submit-panel" class="canva-panel flex flex-col items-center justify-between gap-5 rounded-3xl p-5 sm:flex-row sm:p-7" style="background: rgb(52, 43, 43);">
-         <div>
-          <p data-template-id="submit-note-title" class="canva-text" style="color: rgb(255, 253, 249); font-weight: 700; font-style: normal; font-size: 15px;">Una última revisión</p>
-          <p data-template-id="submit-note-text" class="canva-text mt-1" style="color: rgb(255, 253, 249); font-weight: 400; font-style: normal; font-size: 13px;">Confirmen especialmente nombres, fecha, hora, dirección y enlaces antes de guardar.</p>
-         </div><button id="submit-button" type="submit" data-template-id="submit-button" class="canva-button primary-button w-full sm:w-auto" disabled="" style="background: rgb(116, 63, 74); color: rgb(255, 255, 255);"> <span id="submit-idle" class="inline-flex items-center gap-2"><i data-lucide="save" style="width:18px"></i><span data-template-id="submit-label" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;">Guardar datos</span></span> <span id="submit-loading" class="hidden items-center gap-2"><span class="spinner"></span><span data-template-id="loading-label" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;">Guardando…</span></span> </button>
+
+        <div class="form-actions">
+          <p>Pueden guardar aunque todavía haya campos vacíos.</p>
+          <button id="save-button" class="primary" type="submit">Guardar información</button>
         </div>
-       </form>
-      </div>
-      <section id="success-view" class="hidden py-10" aria-live="polite">
-       <div data-template-id="success-card" class="canva-card form-card mx-auto max-w-2xl rounded-3xl p-7 text-center sm:p-12" style="background: rgb(255, 253, 249);"><span class="mx-auto mb-6 grid h-16 w-16 place-items-center rounded-full bg-[#e4ecdf] text-[#66715f]"><i data-lucide="check"></i></span>
-        <p data-template-id="success-kicker" class="canva-text mb-2 uppercase" style="color: rgb(102, 113, 95); font-weight: 700; font-style: normal; font-size: 12px; letter-spacing: 0.35rem;">Información recibida</p>
-        <h2 data-template-id="success-title" class="canva-text editorial-title" style="color: rgb(52, 43, 43); font-weight: 400; font-style: normal; font-size: 42px;">¡Gracias por compartir sus detalles!</h2>
-        <p data-template-id="success-text" class="canva-text mx-auto mt-4 max-w-lg" style="color: rgb(120, 109, 104); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.6;">La información quedó guardada correctamente y ya puede utilizarse para preparar su invitación.</p><button id="another-response" type="button" data-template-id="another-response-button" class="canva-button secondary-button mt-8 border border-[#743f4a]" style="background: rgb(255, 253, 249); color: rgb(116, 63, 74); font-weight: 700; font-style: normal; font-size: 14px;">Enviar otra respuesta</button>
-       </div>
-      </section>
-     </section>
-    </main>
-    <footer data-template-id="footer-section" class="canva-footer w-full px-6 py-8 text-center" style="background: rgb(175, 155, 136);">
-     <p data-template-id="footer-text" class="canva-text mx-auto max-w-2xl" style="color: rgb(245, 237, 229); font-weight: 400; font-style: normal; font-size: 13px; line-height: 1.5;">Cada detalle cuenta. Revisen cuidadosamente la ortografía de los nombres, fechas y lugares antes de enviar.</p>
-    </footer>
-   </div>
+      </form>
+    </section>
+  </main>
+
+  <div id="loading-overlay" class="loading-overlay hidden" aria-live="polite">
+    <div><div class="loader"></div><strong id="loading-text">Preparando su proyecto…</strong></div>
   </div>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
   <template id="schedule-template">
-   <div class="schedule-item relative rounded-2xl border border-[#dfd4c6] bg-white/60 p-4"><button type="button" class="remove-item absolute right-2 top-2 text-red-700" aria-label="Eliminar momento"><i data-lucide="x" style="width:16px"></i></button> <label class="mb-1 block text-xs font-semibold" for="">Momento</label><input type="text" class="schedule-name field-control mb-3 py-2" placeholder="Ej. El vals" required=""> <label class="mb-1 block text-xs font-semibold" for="">Hora</label><input type="time" class="schedule-time field-control py-2" required="">
-   </div>
+    <div class="schedule-item">
+      <div><label class="field-label">Momento</label><input class="control schedule-name" placeholder="Ej. El vals"></div>
+      <div><label class="field-label">Hora</label><input class="control schedule-time" type="time"></div>
+      <button class="remove" type="button">Eliminar</button>
+    </div>
   </template>
+
   <script>
-  const $=id=>document.getElementById(id);
-  const loginForm=$("login-form"),form=$("wedding-form"),loginView=$("login-view"),formView=$("form-view"),successView=$("success-view");
-  const messageBox=$("global-message"),submitButton=$("submit-button"),submitIdle=$("submit-idle"),submitLoading=$("submit-loading");
-  const scheduleContainer=$("dynamic-schedule");
-  let sdkReady=false,isSubmitting=false,clientName="",clientCode="";
-  let inspirationFiles=[],extraFiles=[],coupleFiles=[];
+    const API_URL = "https://script.google.com/macros/s/AKfycbzR5qd3Hu2BkifUaRF_JPFzXpwNjd66z0hWqxOfXehH1q4BwPxiSy2EKO-VdLLC4HMiGw/exec";
+    const AUTOSAVE_MS = 20000;
+    const MAX_FILE_BYTES = 7 * 1024 * 1024;
+    const MAX_UPLOADS = 8;
 
-  function value(name){const el=form.elements[name];return el?String(el.value||"").trim():""}
-  function validHttps(raw){if(!raw)return true;try{return new URL(raw).protocol==="https:"}catch{return false}}
-  function showMessage(text,type="error"){
-    messageBox.textContent=text;messageBox.className="mb-5 rounded-xl border px-4 py-3 text-sm";
-    messageBox.classList.add(type==="warning"?"border-amber-200":"border-red-200",type==="warning"?"bg-amber-50":"bg-red-50",type==="warning"?"text-amber-900":"text-red-800");
-    messageBox.scrollIntoView({behavior:"smooth",block:"center"});
-  }
-  function hideMessage(){messageBox.classList.add("hidden");messageBox.textContent=""}
-  function setSubmitting(on){isSubmitting=on;submitButton.disabled=on||!sdkReady;submitIdle.classList.toggle("hidden",on);submitLoading.classList.toggle("hidden",!on);submitLoading.classList.toggle("inline-flex",on)}
-  function files(input,status,target){
-    const names=Array.from(input.files||[]).map(f=>f.name);target.splice(0,target.length,...names);
-    status.textContent=names.length?`${names.length} ${names.length===1?"foto seleccionada":"fotos seleccionadas"}.`:"Ninguna foto seleccionada.";
-  }
+    const $ = id => document.getElementById(id);
+    const loginView = $("login-view");
+    const portalView = $("portal-view");
+    const loginForm = $("login-form");
+    const weddingForm = $("wedding-form");
+    const saveButton = $("save-button");
+    const saveStatus = $("save-status");
+    const fileInputs = [...document.querySelectorAll('input[type="file"]')];
 
-  loginForm.addEventListener("submit",e=>{
-    e.preventDefault();
-    clientName=$("client-name").value.trim();clientCode=$("client-code").value.trim();
-    if(!clientName||!clientCode){$("login-message").textContent="Escribe tu nombre y código privado para continuar.";$("login-message").classList.remove("hidden");return}
-    $("login-message").classList.add("hidden");loginView.classList.add("hidden");formView.classList.remove("hidden");formView.classList.add("reveal");formView.scrollIntoView({behavior:"smooth"});
-  });
+    let token = sessionStorage.getItem("fela_token") || "";
+    let client = null;
+    let photos = [];
+    let dirty = false;
+    let saving = false;
+    let toastTimer;
 
-  $("confirmacion-rsvp").addEventListener("change",e=>$("designer-notice").classList.toggle("hidden",e.target.value!=="Formulario con pases incluidos conectado a hoja de cálculo"));
-  $("open-map-button").addEventListener("click",()=>{const url=value("enlace_mapa");if(!url||!validHttps(url)){showMessage("Pega primero un enlace válido que comience con https://");$("enlace-mapa").focus();return}window.open(url,"_blank","noopener,noreferrer")});
-  $("add-schedule").addEventListener("click",()=>{scheduleContainer.appendChild($("schedule-template").content.cloneNode(true));lucide.createIcons()});
-  scheduleContainer.addEventListener("click",e=>{const b=e.target.closest(".remove-item");if(b)b.closest(".schedule-item").remove()});
-  $("fotos-inspiracion").addEventListener("change",e=>files(e.target,$("inspiration-status"),inspirationFiles));
-  $("fotos-extras").addEventListener("change",e=>files(e.target,$("extras-status"),extraFiles));
-  $("fotos-novios").addEventListener("change",e=>files(e.target,$("photo-status"),coupleFiles));
+    async function api(payload) {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) throw new Error("No fue posible comunicarse con el portal.");
+      const result = await response.json();
+      if (!result.ok) throw new Error(result.message || "No fue posible completar la solicitud.");
+      return result;
+    }
 
-  function buildRecord(){
-    const moments=[...document.querySelectorAll(".schedule-item")].map(x=>`${x.querySelector(".schedule-name").value.trim()}: ${x.querySelector(".schedule-time").value}`).filter(x=>!x.startsWith(":"));
-    const children=[form.elements.politica_ninos_no.checked?"NO NIÑOS":"",form.elements.politica_ninos_guarderia.checked?"Referencia de guardería durante el evento":""].filter(Boolean).join(" | ");
-    return {
-      id_cliente:`cliente-${Date.now()}`,nombre_cliente:clientName,codigo_privado:clientCode,
-      nombres_pareja:value("nombres_pareja")+" | Orden: "+value("orden_pareja"),
-      fecha_ceremonia:value("fecha_ceremonia"),hora_ceremonia:value("hora_ceremonia"),nombre_lugar:value("nombre_lugar"),direccion_completa:value("direccion_completa"),enlace_mapa:value("enlace_mapa"),
-      fecha_limite_rsvp:value("fecha_limite_rsvp"),tipo_confirmacion:value("confirmacion_rsvp"),nota_invitados:value("nota_invitados")+" | "+value("comentarios_rsvp"),politica_ninos:children,
-      dress_code:value("dress_code"),nota_estilo:value("nota_estilo"),hora_ceremonia_evento:value("hora_ceremonia_evento"),hora_coctel:value("hora_coctel"),hora_cena:value("hora_cena"),hora_fiesta:value("hora_fiesta"),momentos_extra:moments.join(" | "),
-      sugerencias_alojamiento:value("sugerencias_alojamiento"),detalles_transporte:value("detalles_transporte"),indicaciones_especiales:value("indicaciones_especiales"),
-      sugerencia_regalo:value("sugerencia_regalo"),mesa_regalo:value("mesa_regalo"),tienda_codigo:value("tienda_codigo"),cuenta_banco:value("cuenta_banco"),instrucciones_regalo:value("instrucciones_regalo"),
-      inspiracion:value("inspiracion"),fotos_inspiracion:inspirationFiles.join(", "),paleta_colores:value("paleta_colores"),cancion:value("cancion"),link_youtube:value("link_youtube"),
-      incluir_cuenta_regresiva:value("incluir_cuenta_regresiva"),detalles_extra:[value("imprescindibles"),value("notas_finales")].filter(Boolean).join("\n"),fotos_extras:extraFiles.join(", "),fotos_novios:coupleFiles.join(", "),
-      estado_proyecto:"Información recibida",comentarios_internos:"",enlace_invitacion:"",ultima_actualizacion:new Date().toISOString()
-    };
-  }
+    function setLoading(show, text = "Preparando su proyecto…") {
+      $("loading-text").textContent = text;
+      $("loading-overlay").classList.toggle("hidden", !show);
+    }
 
-  form.addEventListener("submit",async e=>{
-    e.preventDefault();if(isSubmitting)return;
-    if(!sdkReady){showMessage("El guardado todavía se está preparando.","warning");return}
-    hideMessage();
-    if(!form.checkValidity()){form.reportValidity();showMessage("Completa los campos obligatorios antes de guardar.");return}
-    if(!validHttps(value("enlace_mapa"))){showMessage("El enlace del mapa debe comenzar con https://");$("enlace-mapa").focus();return}
-    if(!validHttps(value("link_youtube"))){showMessage("El enlace de YouTube debe comenzar con https://");$("link-youtube").focus();return}
-    setSubmitting(true);
-    const result=await window.dataSdk.create(buildRecord());
-    if(result.isOk){formView.classList.add("hidden");successView.classList.remove("hidden");successView.scrollIntoView({behavior:"smooth",block:"start"})}
-    else showMessage("No pudimos guardar la información. Revisa tu conexión e inténtalo nuevamente.");
-    setSubmitting(false);
-  });
+    function toast(message, type = "success") {
+      clearTimeout(toastTimer);
+      const box = $("toast");
+      box.textContent = message;
+      box.className = "toast" + (type === "error" ? " error" : "");
+      toastTimer = setTimeout(() => box.classList.add("hidden"), 4200);
+    }
 
-  $("another-response").addEventListener("click",()=>{
-    form.reset();loginForm.reset();scheduleContainer.innerHTML="";inspirationFiles=[];extraFiles=[];coupleFiles=[];
-    ["inspiration-status","extras-status","photo-status"].forEach(id=>$(id).textContent="Ninguna foto seleccionada.");
-    $("designer-notice").classList.add("hidden");successView.classList.add("hidden");formView.classList.add("hidden");loginView.classList.remove("hidden");loginView.scrollIntoView({behavior:"smooth"});$("client-name").focus();
-  });
+    function status(text, type = "") {
+      saveStatus.textContent = text;
+      saveStatus.className = "save-status" + (type ? " " + type : "");
+    }
 
-  document.addEventListener("DOMContentLoaded",async()=>{
-    lucide.createIcons();
-    const result=await window.dataSdk.init({onDataChanged(){}});
-    if(result.isOk){sdkReady=true;submitButton.disabled=false}
-    else showMessage("No fue posible preparar el guardado. Actualiza la página e inténtalo nuevamente.");
-  });
-</script>
- 
-</body></html>
+    function formatDate(value) {
+      if (!value) return "";
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? "" : date.toLocaleString("es-MX", { dateStyle: "medium", timeStyle: "short" });
+    }
+
+    function showPortal() {
+      loginView.classList.add("hidden");
+      portalView.classList.remove("hidden");
+      $("welcome-title").textContent = client ? `Hola, ${client.name}` : "Los detalles de su celebración";
+      window.scrollTo({ top: 0 });
+    }
+
+    function showLogin(message = "") {
+      portalView.classList.add("hidden");
+      loginView.classList.remove("hidden");
+      const box = $("login-message");
+      box.textContent = message;
+      box.classList.toggle("hidden", !message);
+      $("client-password").value = "";
+      token = "";
+      client = null;
+      sessionStorage.removeItem("fela_token");
+    }
+
+    function serializeForm() {
+      const data = {};
+      const formData = new FormData(weddingForm);
+      for (const [key, value] of formData.entries()) {
+        if (!(value instanceof File)) data[key] = value;
+      }
+      for (const checkbox of weddingForm.querySelectorAll('input[type="checkbox"]')) {
+        data[checkbox.name] = checkbox.checked;
+      }
+      data.momentos_extra = [...document.querySelectorAll(".schedule-item")].map(item => ({
+        nombre: item.querySelector(".schedule-name").value.trim(),
+        hora: item.querySelector(".schedule-time").value
+      })).filter(item => item.nombre || item.hora);
+      return data;
+    }
+
+    function fillForm(data = {}) {
+      for (const [key, value] of Object.entries(data)) {
+        if (key === "momentos_extra") continue;
+        const fields = weddingForm.elements.namedItem(key);
+        if (!fields) continue;
+        if (fields instanceof RadioNodeList) {
+          [...fields].forEach(field => {
+            if (field.type === "radio") field.checked = field.value === value;
+            else if (field.type === "checkbox") field.checked = Boolean(value);
+          });
+        } else if (fields.type === "checkbox") {
+          fields.checked = Boolean(value);
+        } else {
+          fields.value = value ?? "";
+        }
+      }
+      $("schedule-items").innerHTML = "";
+      if (Array.isArray(data.momentos_extra)) data.momentos_extra.forEach(addScheduleItem);
+    }
+
+    function addScheduleItem(item = {}) {
+      const node = $("schedule-template").content.cloneNode(true);
+      node.querySelector(".schedule-name").value = item.nombre || "";
+      node.querySelector(".schedule-time").value = item.hora || "";
+      $("schedule-items").appendChild(node);
+    }
+
+    function renderPhotos() {
+      const target = $("uploaded-photos");
+      if (!photos.length) {
+        target.innerHTML = "<strong>Fotografías guardadas</strong><p>Aún no hay fotografías en este expediente.</p>";
+        return;
+      }
+      target.innerHTML = `<strong>Fotografías guardadas (${photos.length})</strong><ul>${
+        photos.map(photo => `<li><a href="${escapeHtml(photo.driveUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(photo.name)}</a></li>`).join("")
+      }</ul>`;
+    }
+
+    function escapeHtml(text) {
+      return String(text || "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[char]));
+    }
+
+    function selectedFiles() {
+      return fileInputs.flatMap(input => [...input.files].map(file => ({ file, type: input.dataset.category || "general" })));
+    }
+
+    function validateFiles(items) {
+      if (items.length > MAX_UPLOADS) throw new Error(`Selecciona un máximo de ${MAX_UPLOADS} imágenes por guardado.`);
+      for (const { file } of items) {
+        if (file.size > MAX_FILE_BYTES) throw new Error(`${file.name} supera el límite de 7 MB.`);
+        if (!/^image\/(jpeg|png|webp|heic|heif)$/i.test(file.type)) throw new Error(`${file.name} no tiene un formato permitido.`);
+      }
+    }
+
+    function fileToUpload(item) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error(`No fue posible leer ${item.file.name}.`));
+        reader.onload = () => resolve({
+          name: item.file.name,
+          mime: item.file.type,
+          type: item.type,
+          base64: String(reader.result).split(",")[1]
+        });
+        reader.readAsDataURL(item.file);
+      });
+    }
+
+    async function loadProject() {
+      const result = await api({ action: "load", token });
+      client = result.client;
+      photos = result.photos || [];
+      fillForm(result.draft || {});
+      renderPhotos();
+      showPortal();
+      dirty = false;
+      if (result.updatedAt) {
+        $("last-saved").textContent = `Último guardado: ${formatDate(result.updatedAt)}`;
+        status("Guardado", "saved");
+      } else {
+        $("last-saved").textContent = "Este es un expediente nuevo";
+        status("Nuevo expediente");
+      }
+    }
+
+    async function saveProject({ manual = false } = {}) {
+      if (!token || saving || (!dirty && !manual)) return;
+      const files = selectedFiles();
+      try {
+        validateFiles(files);
+        saving = true;
+        saveButton.disabled = true;
+        saveButton.textContent = "Guardando…";
+        status(files.length ? "Subiendo fotografías…" : "Guardando…", "saving");
+        const uploads = await Promise.all(files.map(fileToUpload));
+        const result = await api({ action: "save", token, data: serializeForm(), uploads });
+        photos = result.photos || photos;
+        renderPhotos();
+        fileInputs.forEach(input => { input.value = ""; });
+        dirty = false;
+        $("last-saved").textContent = `Último guardado: ${formatDate(result.updatedAt)}`;
+        status("Guardado", "saved");
+        if (manual) toast("La información quedó guardada correctamente.");
+      } catch (error) {
+        status("No se pudo guardar", "error");
+        toast(error.message, "error");
+        if (/sesión venció/i.test(error.message)) showLogin("Tu sesión venció. Inicia sesión nuevamente.");
+      } finally {
+        saving = false;
+        saveButton.disabled = false;
+        saveButton.textContent = "Guardar información";
+      }
+    }
+
+    loginForm.addEventListener("submit", async event => {
+      event.preventDefault();
+      const button = $("login-button");
+      const message = $("login-message");
+      message.classList.add("hidden");
+      button.disabled = true;
+      button.textContent = "Ingresando…";
+      try {
+        const result = await api({
+          action: "login",
+          clientId: $("client-identifier").value.trim(),
+          password: $("client-password").value
+        });
+        token = result.token;
+        client = result.client;
+        sessionStorage.setItem("fela_token", token);
+        setLoading(true);
+        await loadProject();
+      } catch (error) {
+        message.textContent = error.message;
+        message.classList.remove("hidden");
+      } finally {
+        setLoading(false);
+        button.disabled = false;
+        button.textContent = "Iniciar sesión";
+      }
+    });
+
+    weddingForm.addEventListener("input", () => {
+      dirty = true;
+      status("Cambios pendientes");
+    });
+    weddingForm.addEventListener("change", () => {
+      dirty = true;
+      status("Cambios pendientes");
+    });
+    weddingForm.addEventListener("submit", event => {
+      event.preventDefault();
+      saveProject({ manual: true });
+    });
+    $("add-schedule").addEventListener("click", () => {
+      addScheduleItem();
+      dirty = true;
+      status("Cambios pendientes");
+    });
+    $("schedule-items").addEventListener("click", event => {
+      const button = event.target.closest(".remove");
+      if (!button) return;
+      button.closest(".schedule-item").remove();
+      dirty = true;
+      status("Cambios pendientes");
+    });
+    $("logout-button").addEventListener("click", () => {
+      if (dirty && !confirm("Hay cambios sin guardar. ¿Deseas cerrar la sesión de todas formas?")) return;
+      showLogin();
+    });
+    window.addEventListener("beforeunload", event => {
+      if (!dirty) return;
+      event.preventDefault();
+      event.returnValue = "";
+    });
+
+    setInterval(() => saveProject(), AUTOSAVE_MS);
+
+    (async function restoreSession() {
+      if (!token) return;
+      try {
+        setLoading(true);
+        await loadProject();
+      } catch (_) {
+        showLogin("Tu sesión anterior terminó. Inicia sesión nuevamente.");
+      } finally {
+        setLoading(false);
+      }
+    })();
+  </script>
+</body>
+</html>
