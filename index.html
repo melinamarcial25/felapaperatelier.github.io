@@ -181,6 +181,21 @@
       font-size: .88rem;
     }
     .portal { min-height: 100vh; }
+    .brand-banner {
+      display: grid;
+      min-height: 8.5rem;
+      place-items: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      padding: 1rem;
+    }
+    .brand-banner img {
+      display: block;
+      width: min(15rem, 55vw);
+      height: 6.2rem;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
     .topbar {
       position: sticky;
       top: 0;
@@ -318,8 +333,27 @@
       padding: 1rem 1.2rem;
       box-shadow: 0 18px 45px rgba(53, 45, 43, .28);
     }
-    .form-actions p { margin: 0; color: rgba(255,255,255,.72); font-size: .83rem; }
-    .form-actions .primary { flex-shrink: 0; }
+    .form-action-copy { flex: 1; }
+    .form-action-copy p { margin: .25rem 0 0; color: rgba(255,255,255,.72); font-size: .83rem; line-height: 1.5; }
+    .form-action-copy strong { display: block; font-size: .9rem; }
+    .form-action-buttons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .65rem; }
+    .form-actions .primary, .form-actions .secondary { flex-shrink: 0; }
+    .form-actions .secondary { border-color: #e4d4c2; color: #fff; }
+    .ready-warning {
+      margin-top: .7rem !important;
+      color: #f3d7b4 !important;
+      font-weight: 700;
+    }
+    .locked-notice {
+      margin-bottom: 1rem;
+      border: 1px solid #9e8a72;
+      border-radius: 1rem;
+      background: #e4d5c2;
+      color: var(--wine-dark);
+      padding: 1rem 1.25rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
     .toast {
       position: fixed;
       right: 1rem;
@@ -354,7 +388,9 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     @media (max-width: 820px) {
       .login-screen { grid-template-columns: 1fr; }
-      .login-intro { min-height: 42vh; align-items: center; padding-top: 7rem; }
+      .login-intro { min-height: 42vh; align-items: center; justify-content: center; padding-top: 7rem; text-align: center; }
+      .login-intro .brand { left: 50%; transform: translateX(-50%); }
+      .intro-copy p { margin-left: auto; margin-right: auto; }
       .login-panel { min-height: 58vh; }
       .intro-copy h1 { font-size: clamp(3rem, 14vw, 5rem); }
     }
@@ -369,8 +405,9 @@
       .span-2 { grid-column: auto; }
       .schedule-item { grid-template-columns: 1fr; border-bottom: 1px solid var(--line); padding-bottom: 1rem; }
       .form-actions { bottom: 0; border-radius: 1rem 1rem 0 0; }
-      .form-actions p { display: none; }
-      .form-actions .primary { width: 100%; }
+      .form-actions { align-items: stretch; flex-direction: column; }
+      .form-action-buttons { display: grid; grid-template-columns: 1fr; }
+      .form-actions .primary, .form-actions .secondary { width: 100%; }
       .progress-note { align-items: flex-start; flex-direction: column; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -410,8 +447,11 @@
     </section>
 
     <section id="portal-view" class="portal hidden">
+      <div class="brand-banner">
+        <img src="assets/fela-logo.png" alt="Fela Atelier">
+      </div>
       <header class="topbar">
-        <img class="topbar-logo" src="assets/fela-logo.png" alt="Fela Atelier">
+        <strong>Portal de clientes</strong>
         <div class="topbar-actions">
           <span id="save-status" class="save-status">Sin cambios</span>
           <button id="logout-button" type="button" class="quiet">Cerrar sesión</button>
@@ -425,6 +465,8 @@
       </div>
 
       <form id="wedding-form" class="form-wrap">
+        <input id="estado_proyecto" name="estado_proyecto" type="hidden" value="Borrador">
+        <div id="locked-notice" class="locked-notice hidden">Este formulario fue marcado como listo para diseñar y ya no admite cambios.</div>
         <div class="progress-note">
           <span>El borrador se guarda automáticamente cada 20 segundos cuando hay cambios.</span>
           <span id="last-saved">Todavía no hay un guardado</span>
@@ -508,7 +550,7 @@
               <p>Definan cómo desean recibir confirmaciones y qué mensaje verán sus invitados.</p>
             </div>
             <div class="grid">
-              <div class="field">
+              <div class="field span-2">
                 <label for="tipo_confirmacion">Tipo de confirmación</label>
                 <select id="tipo_confirmacion" name="tipo_confirmacion" class="control">
                   <option value="">Todavía no definido</option>
@@ -518,14 +560,24 @@
                   <option>Formulario con pases incluidos conectado a hoja de cálculo</option>
                 </select>
               </div>
-              <div class="field"><label for="fecha_limite_rsvp">Fecha límite</label><input id="fecha_limite_rsvp" name="fecha_limite_rsvp" class="control" type="date"></div>
-              <div class="field span-2"><label for="nota_invitados">Nota para los invitados</label><input id="nota_invitados" name="nota_invitados" class="control" placeholder="Agradecemos confirmar antes de la fecha límite"></div>
-              <div class="field span-2"><label for="comentarios_rsvp">Restricciones, alergias u observaciones</label><textarea id="comentarios_rsvp" name="comentarios_rsvp" class="control"></textarea></div>
-              <div class="field span-2">
-                <span class="field-label">Política de niños</span>
-                <div class="choice-row">
-                  <label class="choice"><input type="checkbox" name="politica_ninos_no" value="Sí"> Evento solo para adultos</label>
-                  <label class="choice"><input type="checkbox" name="politica_ninos_guarderia" value="Sí"> Habrá servicio de guardería</label>
+              <div id="rsvp-whatsapp-panel" class="conditional-panel hidden">
+                <div class="field">
+                  <label for="telefono_confirmacion">Número de WhatsApp para recibir confirmaciones</label>
+                  <input id="telefono_confirmacion" name="telefono_confirmacion" class="control" type="tel" placeholder="Ej. +52 662 123 4567">
+                </div>
+              </div>
+              <div id="rsvp-form-panel" class="conditional-panel hidden">
+                <div class="grid">
+                  <div class="field"><label for="fecha_limite_rsvp">Fecha límite</label><input id="fecha_limite_rsvp" name="fecha_limite_rsvp" class="control" type="date"></div>
+                  <div class="field"><label for="nota_invitados">Nota para los invitados</label><input id="nota_invitados" name="nota_invitados" class="control" placeholder="Agradecemos confirmar antes de la fecha límite"></div>
+                  <div class="field span-2"><label for="comentarios_rsvp">Restricciones, alergias u observaciones</label><textarea id="comentarios_rsvp" name="comentarios_rsvp" class="control"></textarea></div>
+                  <div class="field span-2">
+                    <span class="field-label">Política de niños</span>
+                    <div class="choice-row">
+                      <label class="choice"><input type="checkbox" name="politica_ninos_no" value="Sí"> Evento solo para adultos</label>
+                      <label class="choice"><input type="checkbox" name="politica_ninos_guarderia" value="Sí"> Habrá servicio de guardería</label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -667,8 +719,16 @@
         </section>
 
         <div class="form-actions">
-          <p>Pueden guardar aunque todavía haya campos vacíos.</p>
-          <button id="save-button" class="primary" type="submit">Guardar información</button>
+          <div class="form-action-copy">
+            <strong>Estado de su formulario</strong>
+            <p>Pueden guardar un borrador o indicar que todavía faltan detalles.</p>
+            <p class="ready-warning">Una vez seleccionado “Listo para diseñar” ya no se podrán hacer cambios. Revisen que toda la información y la ortografía sean correctas.</p>
+          </div>
+          <div class="form-action-buttons">
+            <button id="save-button" class="secondary" type="submit">Guardar borrador</button>
+            <button id="incomplete-button" class="secondary" type="button">Detalles sin completar</button>
+            <button id="ready-button" class="primary" type="button">Listo para diseñar</button>
+          </div>
         </div>
       </form>
     </section>
@@ -692,6 +752,7 @@
     const AUTOSAVE_MS = 20000;
     const MAX_FILE_BYTES = 7 * 1024 * 1024;
     const MAX_UPLOADS = 8;
+    const WHATSAPP_NUMBER = "526623398899";
 
     const $ = id => document.getElementById(id);
     const loginView = $("login-view");
@@ -707,6 +768,7 @@
     let photos = [];
     let dirty = false;
     let saving = false;
+    let locked = false;
     let toastTimer;
 
     async function api(payload) {
@@ -816,6 +878,27 @@
         "hidden",
         selectedRadio("incluir_padrinos_corte") !== "Sí"
       );
+      const confirmationType = $("tipo_confirmacion").value;
+      $("rsvp-whatsapp-panel").classList.toggle(
+        "hidden",
+        confirmationType !== "Respuesta de WhatsApp"
+      );
+      $("rsvp-form-panel").classList.toggle(
+        "hidden",
+        ![
+          "Confirmación sencilla conectada a hoja de cálculo",
+          "Formulario con pases incluidos conectado a hoja de cálculo"
+        ].includes(confirmationType)
+      );
+    }
+
+    function setFormLocked(value) {
+      locked = value;
+      weddingForm.querySelectorAll("input, select, textarea, button").forEach(control => {
+        control.disabled = value;
+      });
+      $("locked-notice").classList.toggle("hidden", !value);
+      if (value) status("Listo para diseñar", "saved");
     }
 
     function addScheduleItem(item = {}) {
@@ -876,6 +959,7 @@
       const result = await api({ action: "load", token });
       client = result.client;
       photos = result.photos || [];
+      setFormLocked(false);
       fillForm(result.draft || {});
       renderPhotos();
       showPortal();
@@ -887,15 +971,20 @@
         $("last-saved").textContent = "Este es un expediente nuevo";
         status("Nuevo expediente");
       }
+      if ((result.draft || {}).estado_proyecto === "Listo para diseñar") {
+        setFormLocked(true);
+      }
     }
 
     async function saveProject({ manual = false } = {}) {
-      if (!token || saving || (!dirty && !manual)) return;
+      if (!token || locked || saving || (!dirty && !manual)) return false;
       const files = selectedFiles();
       try {
         validateFiles(files);
         saving = true;
-        saveButton.disabled = true;
+        $("save-button").disabled = true;
+        $("incomplete-button").disabled = true;
+        $("ready-button").disabled = true;
         saveButton.textContent = "Guardando…";
         status(files.length ? "Subiendo fotografías…" : "Guardando…", "saving");
         const uploads = await Promise.all(files.map(fileToUpload));
@@ -907,14 +996,52 @@
         $("last-saved").textContent = `Último guardado: ${formatDate(result.updatedAt)}`;
         status("Guardado", "saved");
         if (manual) toast("La información quedó guardada correctamente.");
+        return true;
       } catch (error) {
         status("No se pudo guardar", "error");
         toast(error.message, "error");
         if (/sesión venció/i.test(error.message)) showLogin("Tu sesión venció. Inicia sesión nuevamente.");
+        return false;
       } finally {
         saving = false;
-        saveButton.disabled = false;
-        saveButton.textContent = "Guardar información";
+        if (!locked) {
+          $("save-button").disabled = false;
+          $("incomplete-button").disabled = false;
+          $("ready-button").disabled = false;
+        }
+        saveButton.textContent = "Guardar borrador";
+      }
+    }
+
+    async function markProjectStatus(projectStatus) {
+      if (locked) return;
+      if (
+        projectStatus === "Listo para diseñar" &&
+        !confirm("¿Confirmas que toda la información y la ortografía son correctas? Después de continuar ya no se podrán hacer cambios.")
+      ) return;
+
+      const whatsappWindow = window.open("about:blank", "_blank");
+      $("estado_proyecto").value = projectStatus;
+      dirty = true;
+      const saved = await saveProject({ manual: true });
+      if (!saved) {
+        if (whatsappWindow) whatsappWindow.close();
+        return;
+      }
+
+      const message = projectStatus === "Listo para diseñar"
+        ? `${client.name} completó su formulario y está listo para diseñar.`
+        : `${client.name} guardó su formulario con detalles sin completar.`;
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      if (whatsappWindow) whatsappWindow.location.href = whatsappUrl;
+      else window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+      if (projectStatus === "Listo para diseñar") {
+        setFormLocked(true);
+        toast("El formulario quedó listo para diseñar y fue bloqueado.");
+      } else {
+        status("Detalles sin completar", "saved");
+        toast("El estado quedó guardado como detalles sin completar.");
       }
     }
 
@@ -957,8 +1084,12 @@
     });
     weddingForm.addEventListener("submit", event => {
       event.preventDefault();
+      $("estado_proyecto").value = "Borrador";
+      dirty = true;
       saveProject({ manual: true });
     });
+    $("incomplete-button").addEventListener("click", () => markProjectStatus("Detalles sin completar"));
+    $("ready-button").addEventListener("click", () => markProjectStatus("Listo para diseñar"));
     $("add-schedule").addEventListener("click", () => {
       addScheduleItem();
       dirty = true;
