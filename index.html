@@ -308,39 +308,47 @@
     .upload-zone input { width: 100%; }
     .upload-help, .photo-list { margin: .6rem 0 0; color: var(--muted); font-size: .8rem; line-height: 1.5; }
     .photo-list a { color: var(--wine); }
-    .photo-items { display: grid; gap: .6rem; margin: .75rem 0 0; padding: 0; list-style: none; }
-    .photo-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .photo-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
       gap: .75rem;
-      border: 1px solid var(--line);
-      border-radius: .75rem;
-      background: rgba(255, 254, 251, .85);
-      padding: .65rem .8rem;
+      margin: .75rem 0 0;
+      padding: 0;
+      list-style: none;
     }
-    .photo-item a { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: .85rem;
+      background: #eee8df;
+    }
+    .photo-thumb-link { display: block; width: 100%; height: 100%; }
     .photo-preview {
       display: block;
-      flex: 0 0 4.25rem;
-      width: 4.25rem;
-      height: 4.25rem;
-      border: 1px solid var(--line);
-      border-radius: .65rem;
+      width: 100%;
+      height: 100%;
       background: #eee8df;
       object-fit: cover;
     }
-    .photo-name {
-      flex: 1;
-      min-width: 0;
-    }
     .delete-photo {
-      flex-shrink: 0;
-      border: 0;
-      background: transparent;
+      position: absolute;
+      top: .38rem;
+      right: .38rem;
+      display: grid;
+      width: 1.8rem;
+      height: 1.8rem;
+      place-items: center;
+      border: 1px solid rgba(54, 38, 31, .18);
+      border-radius: 50%;
+      background: rgba(255, 254, 251, .94);
       color: var(--danger);
+      font-size: 1.2rem;
       font-weight: 700;
-      padding: .35rem;
+      line-height: 1;
+      padding: 0;
+      box-shadow: 0 3px 10px rgba(54, 38, 31, .16);
     }
     .schedule-items { display: grid; gap: .75rem; margin-top: .8rem; }
     .schedule-item { display: grid; grid-template-columns: 1fr 9rem auto; gap: .65rem; align-items: end; }
@@ -939,8 +947,8 @@
         return;
       }
       target.innerHTML = `<strong>Fotografías guardadas (${photos.length})</strong><ul class="photo-items">${
-        photos.map(photo => `<li class="photo-item"><img class="photo-preview" data-thumbnail-id="${escapeHtml(photo.id)}" alt="Vista previa de ${escapeHtml(photo.name)}"><a class="photo-name" href="${escapeHtml(photo.driveUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(photo.name)}</a>${
-          locked ? "" : `<button class="delete-photo" type="button" data-photo-id="${escapeHtml(photo.id)}" data-photo-name="${escapeHtml(photo.name)}">Eliminar</button>`
+        photos.map(photo => `<li class="photo-item"><a class="photo-thumb-link" href="${escapeHtml(photo.driveUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Abrir ${escapeHtml(photo.name)}"><img class="photo-preview" data-thumbnail-id="${escapeHtml(photo.id)}" alt="Vista previa de ${escapeHtml(photo.name)}"></a>${
+          locked ? "" : `<button class="delete-photo" type="button" aria-label="Eliminar ${escapeHtml(photo.name)}" data-photo-id="${escapeHtml(photo.id)}" data-photo-name="${escapeHtml(photo.name)}">×</button>`
         }</li>`).join("")
       }</ul>`;
       hydratePhotoThumbnails();
