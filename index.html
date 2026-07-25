@@ -1043,8 +1043,16 @@
       const result = await api({ action: "load", token });
       client = result.client;
       photos = result.photos || [];
+      const sheetStatus =
+        result.status ||
+        (result.draft || {}).estado_proyecto ||
+        "Borrador";
+      const synchronizedDraft = {
+        ...(result.draft || {}),
+        estado_proyecto: sheetStatus
+      };
       setFormLocked(false);
-      fillForm(result.draft || {});
+      fillForm(synchronizedDraft);
       renderPhotos();
       showPortal();
       dirty = false;
@@ -1055,7 +1063,7 @@
         $("last-saved").textContent = "Este es un expediente nuevo";
         status("Nuevo expediente");
       }
-      if ((result.draft || {}).estado_proyecto === "Listo para diseñar") {
+      if (sheetStatus === "Listo para diseñar") {
         setFormLocked(true);
       }
     }
