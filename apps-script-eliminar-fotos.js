@@ -26,6 +26,9 @@ function doPost(e) {
       case 'deletePhoto':
         result = deletePhoto_(request);
         break;
+      case 'getPhotoThumbnail':
+        result = getPhotoThumbnail_(request);
+        break;
       default:
         throw new Error('Acción no permitida.');
     }
@@ -107,6 +110,36 @@ function deletePhoto_(request) {
   } finally {
     lock.releaseLock();
   }
+}
+
+function getPhotoThumbnail_(request) {
+  const session = session_(request.token);
+  const photoId = String(request.photoId || '').trim();
+  const existing = responseFor_(session.clientId);
+
+  if (!existing || !photoId) {
+    throw new Error('No encontramos la fotografía solicitada.');
+  }
+
+  const photos = parseJson_(existing.fotos_json, []);
+  const belongsToClient = photos.some(photo =>
+    String(photo.id || '') === photoId
+  );
+
+  if (!belongsToClient) {
+    throw new Error('La fotografía no pertenece a este expediente.');
+  }
+
+  const thumbnail = DriveApp.getFileById(photoId).getThumbnail();
+  if (!thumbnail) return { dataUrl: '' };
+
+  return {
+    dataUrl:
+      'data:' +
+      thumbnail.getContentType() +
+      ';base64,' +
+      Utilities.base64Encode(thumbnail.getBytes())
+  };
 }
 
 function removeFileRecord_(photo) {
