@@ -90,7 +90,7 @@
       overflow: hidden;
       padding: clamp(2rem, 6vw, 6rem);
       color: var(--wine-dark);
-      text-align: center;
+      text-align: left;
       background:
         linear-gradient(145deg, rgba(245, 236, 223, .1), rgba(245, 236, 223, .48)),
         url("assets/fela-floral-background.jpg") center / cover;
@@ -106,15 +106,15 @@
     .intro-copy { position: relative; z-index: 1; max-width: 42rem; }
     .intro-copy h1 {
       max-width: 10ch;
-      margin: 0 auto;
+      margin: 0;
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 7vw, 6.4rem);
+      font-size: clamp(2.7rem, 5vw, 4.8rem);
       font-weight: 500;
       line-height: .98;
     }
     .intro-copy p {
       max-width: 38rem;
-      margin: 1.5rem auto 0;
+      margin: 1.5rem 0 0;
       color: rgba(54, 38, 31, .78);
       font-size: clamp(1rem, 1.5vw, 1.15rem);
       line-height: 1.7;
@@ -421,9 +421,9 @@
     @media (max-width: 820px) {
       .login-screen { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
       .login-intro { min-height: 42vh; align-items: center; justify-content: center; padding-top: 3rem; text-align: center; }
-      .intro-copy p { margin-left: auto; margin-right: auto; }
+      .intro-copy h1, .intro-copy p { margin-left: auto; margin-right: auto; }
       .login-panel { min-height: 58vh; }
-      .intro-copy h1 { font-size: clamp(3rem, 14vw, 5rem); }
+      .intro-copy h1 { font-size: clamp(2.5rem, 11vw, 3.8rem); }
     }
     @media (max-width: 650px) {
       .screen { padding: 0; }
