@@ -308,6 +308,26 @@
     .upload-zone input { width: 100%; }
     .upload-help, .photo-list { margin: .6rem 0 0; color: var(--muted); font-size: .8rem; line-height: 1.5; }
     .photo-list a { color: var(--wine); }
+    .photo-items { display: grid; gap: .6rem; margin: .75rem 0 0; padding: 0; list-style: none; }
+    .photo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      background: rgba(255, 254, 251, .85);
+      padding: .65rem .8rem;
+    }
+    .photo-item a { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .delete-photo {
+      flex-shrink: 0;
+      border: 0;
+      background: transparent;
+      color: var(--danger);
+      font-weight: 700;
+      padding: .35rem;
+    }
     .schedule-items { display: grid; gap: .75rem; margin-top: .8rem; }
     .schedule-item { display: grid; grid-template-columns: 1fr 9rem auto; gap: .65rem; align-items: end; }
     .remove { min-height: 3.15rem; border: 0; background: transparent; color: var(--danger); font-weight: 700; }
@@ -885,6 +905,7 @@
         control.disabled = value;
       });
       $("locked-notice").classList.toggle("hidden", !value);
+      renderPhotos();
       if (value) status("Listo para diseñar", "saved");
     }
 
@@ -901,9 +922,35 @@
         target.innerHTML = "<strong>Fotografías guardadas</strong><p>Aún no hay fotografías en este expediente.</p>";
         return;
       }
-      target.innerHTML = `<strong>Fotografías guardadas (${photos.length})</strong><ul>${
-        photos.map(photo => `<li><a href="${escapeHtml(photo.driveUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(photo.name)}</a></li>`).join("")
+      target.innerHTML = `<strong>Fotografías guardadas (${photos.length})</strong><ul class="photo-items">${
+        photos.map(photo => `<li class="photo-item"><a href="${escapeHtml(photo.driveUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(photo.name)}</a>${
+          locked ? "" : `<button class="delete-photo" type="button" data-photo-id="${escapeHtml(photo.id)}" data-photo-name="${escapeHtml(photo.name)}">Eliminar</button>`
+        }</li>`).join("")
       }</ul>`;
+    }
+
+    async function deleteSavedPhoto(photoId, photoName) {
+      if (
+        locked ||
+        !confirm(`¿Deseas eliminar "${photoName}"? La imagen se moverá a la papelera de Drive.`)
+      ) return;
+
+      try {
+        status("Eliminando fotografía…", "saving");
+        const result = await api({
+          action: "deletePhoto",
+          token: token,
+          photoId: photoId
+        });
+        photos = result.photos || [];
+        renderPhotos();
+        $("last-saved").textContent = `Último guardado: ${formatDate(result.updatedAt)}`;
+        status("Guardado", "saved");
+        toast("La fotografía fue eliminada.");
+      } catch (error) {
+        status("No se pudo eliminar", "error");
+        toast(error.message, "error");
+      }
     }
 
     function escapeHtml(text) {
@@ -1078,6 +1125,11 @@
       button.closest(".schedule-item").remove();
       dirty = true;
       status("Cambios pendientes");
+    });
+    $("uploaded-photos").addEventListener("click", event => {
+      const button = event.target.closest(".delete-photo");
+      if (!button) return;
+      deleteSavedPhoto(button.dataset.photoId, button.dataset.photoName);
     });
     $("logout-button").addEventListener("click", () => {
       if (dirty && !confirm("Hay cambios sin guardar. ¿Deseas cerrar la sesión de todas formas?")) return;
