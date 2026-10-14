@@ -35,6 +35,11 @@ const RESPONSE_HEADERS_V2 = [
   'nombre_lugar',
   'direccion_completa',
   'enlace_mapa',
+  'fecha_recepcion',
+  'hora_recepcion',
+  'nombre_lugar_recepcion',
+  'direccion_recepcion',
+  'enlace_mapa_recepcion',
 
   // 03 · Confirmación de asistencia.
   'tipo_confirmacion',
@@ -42,6 +47,11 @@ const RESPONSE_HEADERS_V2 = [
   'fecha_limite_rsvp',
   'nota_invitados',
   'comentarios_rsvp',
+  'restricciones_color',
+  'restricciones_vestimenta',
+  'preguntar_alergias',
+  'preguntar_tipo_alimentacion',
+  'solicitar_telefono_invitados',
   'politica_ninos_no',
   'politica_ninos_guarderia',
 
@@ -66,6 +76,15 @@ const RESPONSE_HEADERS_V2 = [
   'mesa_regalo',
   'tienda_codigo',
   'cuenta_banco',
+  'opcion_regalo_cuenta_banco',
+  'opcion_regalo_mesa',
+  'opcion_regalo_sobre',
+  'banco_destinatario',
+  'banco_numero_cuenta',
+  'banco_nombre',
+  'mesa_nombre_codigo',
+  'mesa_tienda',
+  'mesa_enlace',
   'instrucciones_regalo',
 
   // 08 · Inspiración y estilo.

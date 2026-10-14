@@ -45,6 +45,11 @@
     button { cursor: pointer; }
     button:disabled { cursor: wait; opacity: .65; }
     .hidden { display: none !important; }
+    .palette-colors { display: flex; flex-wrap: wrap; gap: .75rem; margin: .5rem 0 1rem; }
+    .palette-color { display: grid; grid-template-columns: 2.75rem minmax(6rem, 1fr); gap: .5rem; align-items: center; padding: .55rem .7rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--paper); }
+    .palette-color input[type="color"] { width: 2.5rem; height: 2.5rem; padding: .15rem; border: 0; background: transparent; cursor: pointer; }
+    .palette-color code { font-size: .85rem; }
+    .palette-color button { grid-column: 1 / -1; padding: .35rem .65rem; border: 1px solid var(--line); border-radius: 999px; color: var(--danger); background: transparent; }
     .serif { font-family: "Cormorant Garamond", serif; }
     .eyebrow {
       margin: 0 0 .7rem;
@@ -607,7 +612,11 @@
                 <div class="grid">
                   <div class="field"><label for="fecha_limite_rsvp">Fecha límite</label><input id="fecha_limite_rsvp" name="fecha_limite_rsvp" class="control" type="date"></div>
                   <div class="field"><label for="nota_invitados">Nota para los invitados</label><input id="nota_invitados" name="nota_invitados" class="control" placeholder="Agradecemos confirmar antes de la fecha límite"></div>
-                  <div class="field span-2"><label for="comentarios_rsvp">Restricciones, alergias u observaciones</label><textarea id="comentarios_rsvp" name="comentarios_rsvp" class="control"></textarea></div>
+                  <div class="field"><label for="restricciones_color">Restricciones de color</label><input id="restricciones_color" name="restricciones_color" class="control" placeholder="Colores que desean evitar"></div>
+                  <div class="field"><label for="restricciones_vestimenta">Restricciones de vestimenta</label><input id="restricciones_vestimenta" name="restricciones_vestimenta" class="control" placeholder="Prendas o estilos que desean evitar"></div>
+                  <div class="field span-2"><span class="field-label">¿Desean preguntar a sus invitados si tienen alergias alimentarias?</span><div class="choice-row"><label class="choice"><input type="radio" name="preguntar_alergias" value="Sí"> Sí</label><label class="choice"><input type="radio" name="preguntar_alergias" value="No"> No</label></div></div>
+                  <div class="field span-2"><span class="field-label">¿Desean preguntar qué tipo de alimentación prefieren?</span><div class="choice-row"><label class="choice"><input type="radio" name="preguntar_tipo_alimentacion" value="Sí"> Sí, incluir opciones como vegetariana, vegana u otra</label><label class="choice"><input type="radio" name="preguntar_tipo_alimentacion" value="No"> No</label></div></div>
+                  <div class="field span-2"><span class="field-label">¿Desean solicitar el número de teléfono de sus invitados?</span><div class="choice-row"><label class="choice"><input type="radio" name="solicitar_telefono_invitados" value="Sí"> Sí</label><label class="choice"><input type="radio" name="solicitar_telefono_invitados" value="No"> No</label></div></div>
                   <div class="field span-2">
                     <span class="field-label">Política de niños</span>
                     <div class="choice-row">
@@ -677,9 +686,9 @@
             </div>
             <div class="grid">
               <div class="field"><label for="sugerencia_regalo">Mensaje o sugerencia</label><input id="sugerencia_regalo" name="sugerencia_regalo" class="control" placeholder="Su presencia es nuestro mejor regalo"></div>
-              <div class="field"><label for="mesa_regalo">Mesa de regalos</label><input id="mesa_regalo" name="mesa_regalo" class="control" placeholder="Nombre o enlace"></div>
-              <div class="field"><label for="tienda_codigo">Tienda y código</label><input id="tienda_codigo" name="tienda_codigo" class="control" placeholder="Liverpool · Evento 123456"></div>
-              <div class="field"><label for="cuenta_banco">Cuenta o sobre</label><input id="cuenta_banco" name="cuenta_banco" class="control" placeholder="Referencia para transferencia o sobre"></div>
+              <div class="field span-2"><span class="field-label">Opciones de regalo (pueden elegir más de una)</span><div class="choice-row"><label class="choice"><input type="checkbox" name="opcion_regalo_cuenta_banco" value="Sí"> Cuenta de banco para transferencias</label><label class="choice"><input type="checkbox" name="opcion_regalo_mesa" value="Sí"> Mesa de regalos</label><label class="choice"><input type="checkbox" name="opcion_regalo_sobre" value="Sí"> Sobre</label></div></div>
+              <div id="regalo-banco-panel" class="conditional-panel hidden span-2"><div class="grid"><div class="field"><label for="banco_destinatario">Nombre del titular de la cuenta</label><input id="banco_destinatario" name="banco_destinatario" class="control" placeholder="Nombre de la persona titular"></div><div class="field"><label for="banco_numero_cuenta">Número de tarjeta o cuenta</label><input id="banco_numero_cuenta" name="banco_numero_cuenta" class="control" inputmode="numeric"></div><div class="field"><label for="banco_nombre">Banco</label><input id="banco_nombre" name="banco_nombre" class="control" placeholder="Nombre del banco"></div></div></div>
+              <div id="regalo-mesa-panel" class="conditional-panel hidden span-2"><div class="grid"><div class="field"><label for="mesa_nombre_codigo">Nombre o código de la mesa</label><input id="mesa_nombre_codigo" name="mesa_nombre_codigo" class="control"></div><div class="field"><label for="mesa_tienda">Tienda</label><input id="mesa_tienda" name="mesa_tienda" class="control" placeholder="Liverpool, Amazon…"></div><div class="field span-2"><label for="mesa_enlace">Enlace de la mesa de regalos</label><input id="mesa_enlace" name="mesa_enlace" class="control" type="url" placeholder="https://..."></div></div></div>
               <div class="field span-2"><label for="instrucciones_regalo">Instrucciones para invitados</label><textarea id="instrucciones_regalo" name="instrucciones_regalo" class="control"></textarea></div>
             </div>
           </div>
@@ -694,7 +703,7 @@
             </div>
             <div class="grid">
               <div class="field span-2"><label for="inspiracion">Inspiración</label><textarea id="inspiracion" name="inspiracion" class="control" placeholder="Estilo, flores, lugares o conceptos que les gusten"></textarea></div>
-              <div class="field"><label for="paleta_colores">Paleta de colores</label><input id="paleta_colores" name="paleta_colores" class="control" placeholder="Marfil, verde salvia y vino"></div>
+              <div class="field span-2"><span class="field-label">Paleta de colores</span><div id="palette-colors" class="palette-colors"></div><button id="add-palette-color" type="button" class="secondary">Añadir color</button><input id="paleta_colores" name="paleta_colores" type="hidden"></div>
               <div class="field"><label for="cancion">Canción</label><input id="cancion" name="cancion" class="control" placeholder="Título y artista"></div>
               <div class="field span-2"><label for="link_youtube">Enlace de YouTube</label><input id="link_youtube" name="link_youtube" class="control" type="url" placeholder="https://youtube.com/..."></div>
               <div class="field span-2 upload-zone">
@@ -877,12 +886,13 @@
         nombre: item.querySelector(".schedule-name").value.trim(),
         hora: item.querySelector(".schedule-time").value
       })).filter(item => item.nombre || item.hora);
+      data.paleta_colores = [...document.querySelectorAll(".palette-color-picker")].map(input => input.value.toUpperCase());
       return data;
     }
 
     function fillForm(data = {}) {
       for (const [key, value] of Object.entries(data)) {
-        if (key === "momentos_extra") continue;
+        if (key === "momentos_extra" || key === "paleta_colores") continue;
         const fields = weddingForm.elements.namedItem(key);
         if (!fields) continue;
         if (fields instanceof RadioNodeList) {
@@ -896,6 +906,7 @@
           fields.value = value ?? "";
         }
       }
+      renderPaletteColors(Array.isArray(data.paleta_colores) ? data.paleta_colores : parsePaletteColors(data.paleta_colores));
       $("schedule-items").innerHTML = "";
       if (Array.isArray(data.momentos_extra)) data.momentos_extra.forEach(addScheduleItem);
       updateConditionalPanels();
@@ -928,6 +939,47 @@
           "Formulario con pases incluidos conectado a hoja de cálculo"
         ].includes(confirmationType)
       );
+      $("regalo-banco-panel").classList.toggle("hidden", !weddingForm.elements.namedItem("opcion_regalo_cuenta_banco").checked);
+      $("regalo-mesa-panel").classList.toggle("hidden", !weddingForm.elements.namedItem("opcion_regalo_mesa").checked);
+    }
+
+    function parsePaletteColors(value) {
+      if (Array.isArray(value)) return value;
+      if (typeof value !== "string" || !value.trim()) return [];
+      try {
+        const parsed = JSON.parse(value);
+        if (Array.isArray(parsed)) return parsed;
+      } catch (_) {}
+      return value.split(/[;,\n]+/).map(item => item.trim()).filter(Boolean).map(item => /^#[0-9a-f]{6}$/i.test(item) ? item : "#7E8B75");
+    }
+
+    function renderPaletteColors(colors = []) {
+      const container = $("palette-colors");
+      container.innerHTML = "";
+      (colors.length ? colors : ["#7E8B75"]).forEach(color => addPaletteColor(/^#[0-9a-f]{6}$/i.test(String(color)) ? color : "#7E8B75"));
+      updatePaletteValue();
+    }
+
+    function addPaletteColor(color = "#7E8B75") {
+      const item = document.createElement("div");
+      item.className = "palette-color";
+      item.innerHTML = '<input class="palette-color-picker" type="color" aria-label="Elegir color de la paleta"><code></code><button type="button" aria-label="Quitar color">Quitar</button>';
+      const picker = item.querySelector("input");
+      picker.value = color;
+      item.querySelector("code").textContent = color.toUpperCase();
+      picker.addEventListener("input", () => { item.querySelector("code").textContent = picker.value.toUpperCase(); updatePaletteValue(); });
+      item.querySelector("button").addEventListener("click", () => {
+        item.remove();
+        if (!$("palette-colors").children.length) addPaletteColor();
+        updatePaletteValue();
+        dirty = true;
+        status("Cambios pendientes");
+      });
+      $("palette-colors").append(item);
+    }
+
+    function updatePaletteValue() {
+      $("paleta_colores").value = JSON.stringify([...document.querySelectorAll(".palette-color-picker")].map(input => input.value.toUpperCase()));
     }
 
     function setFormLocked(value) {
@@ -1181,6 +1233,12 @@
     $("ready-button").addEventListener("click", () => markProjectStatus("Listo para diseñar"));
     $("add-schedule").addEventListener("click", () => {
       addScheduleItem();
+      dirty = true;
+      status("Cambios pendientes");
+    });
+    $("add-palette-color").addEventListener("click", () => {
+      addPaletteColor();
+      updatePaletteValue();
       dirty = true;
       status("Cambios pendientes");
     });
